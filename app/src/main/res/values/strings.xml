@@ -1,6 +1,8 @@
 <!--
  Copyright 2016, 2019 MyOralVillage
  All Rights Reserved
+
+ These values are for Kenya (which has the code mcc639 for network providers
  -->
 <resources>
     <string name="app_name">FinancialNumeracyGames</string>
@@ -72,7 +74,7 @@
     <string name="cannot_make_directory">Could not create directory</string>
 
     <!-- Country specific format for currency -->
-    <string name="Money_format">%.0f /-Tsh</string>
+    <string name="Money_format">%.0f /-Ksh</string>
 
     <!-- Country specific values of the currencies
          Will be converted to a floating point value
@@ -87,11 +89,11 @@
          They also MUST match the bills cur_1, cur_2 .., cur_9 or the user will be VERY confused :-)
          -->
     <string-array name="Value_Each_Currency">
+        <item>50</item>
+        <item>100</item>
+        <item>200</item>
         <item>500</item>
         <item>1000</item>
-        <item>2000</item>
-        <item>5000</item>
-        <item>10000</item>
     </string-array>
 
     <!--
@@ -110,10 +112,10 @@
         -->
 
     <string-array name="Currency_tests">
-        <item>basket_corn,2500f,5500f</item>
-        <item>bananas,500f,1000f</item>
-        <item>basket_fish,5500f,7000f</item>
-        <item>basketoranges,3500f,5000f</item>
+        <item>basket_corn,250f,550f</item>
+        <item>bananas,50f,100f</item>
+        <item>basket_fish,550f,700f</item>
+        <item>basketoranges,350f,500f</item>
     </string-array>
 
     <!--
@@ -126,7 +128,7 @@
       -->
 
     <string name="Currency_demo">
-        basket_corn,2500f,5500f
+        basket_corn,250f,550f
     </string>
 
 </resources>
