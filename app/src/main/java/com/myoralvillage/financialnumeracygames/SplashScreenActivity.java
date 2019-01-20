@@ -1,3 +1,8 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.content.Intent;

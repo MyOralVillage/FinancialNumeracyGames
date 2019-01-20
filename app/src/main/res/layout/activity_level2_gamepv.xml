@@ -1,32 +1,37 @@
+<!--
+ Copyright 2016, 2019 MyOralVillage
+ All Rights Reserved
+ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Level2ActivityGamePV"
-    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
     android:background="#a5ebc3"
-    android:layout_gravity="center_horizontal">
+    android:orientation="vertical"
+    tools:context=".Level2ActivityGamePV">
 
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom" >
+        android:layout_gravity="bottom">
+
         <ImageView
             android:id="@+id/score"
-            android:src="@drawable/star0"
             android:layout_width="250dip"
             android:layout_height="60dip"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dip"
-            android:layout_alignParentLeft="true"/>
+            android:src="@drawable/star0" />
 
         <ImageButton
             android:id="@+id/home_button"
             android:layout_width="50dip"
             android:layout_height="50dip"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="10dip"
             android:layout_marginRight="10dip"
-            android:layout_alignParentRight="true"
             android:background="@drawable/home"
             android:onClick="setHomeButton" />
     </RelativeLayout>
@@ -34,253 +39,288 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.9"
         android:layout_gravity="center"
+        android:layout_weight="0.9"
         android:orientation="horizontal">
+
         <LinearLayout
             android:id="@+id/hundreds_layout_odd"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:gravity="center"
-            android:paddingLeft="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="20dp">
+
             <ImageView
                 android:id="@+id/hundreds_representation1"
-                android:src="@drawable/game2_hundreds"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_hundreds"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/hundreds_representation2"
-                android:src="@drawable/game2_hundreds"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_hundreds"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/hundreds_representation3"
-                android:src="@drawable/game2_hundreds"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_hundreds"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/hundreds_representation4"
-                android:src="@drawable/game2_hundreds"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_hundreds"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/hundreds_representation5"
-                android:src="@drawable/game2_hundreds"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_hundreds"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/hundreds_representation6"
-                android:src="@drawable/game2_hundreds"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_hundreds"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/hundreds_representation7"
-                android:src="@drawable/game2_hundreds"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_hundreds"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/hundreds_representation8"
-                android:src="@drawable/game2_hundreds"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_hundreds"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/hundreds_representation9"
-                android:src="@drawable/game2_hundreds"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_hundreds"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/hundreds_representation10"
-                android:src="@drawable/game2_hundreds"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_hundreds"
+                android:visibility="invisible" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/tens_layout_odd"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
             android:gravity="center"
-            android:paddingLeft="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="20dp">
+
             <ImageView
                 android:id="@+id/tens_representation1"
-                android:src="@drawable/game2_tens"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_tens"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/tens_representation2"
-                android:src="@drawable/game2_tens"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_tens"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/tens_representation3"
-                android:src="@drawable/game2_tens"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_tens"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/tens_representation4"
-                android:src="@drawable/game2_tens"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_tens"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/tens_representation5"
-                android:src="@drawable/game2_tens"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_tens"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/tens_representation6"
-                android:src="@drawable/game2_tens"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_tens"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/tens_representation7"
-                android:src="@drawable/game2_tens"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_tens"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/tens_representation8"
-                android:src="@drawable/game2_tens"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_tens"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/tens_representation9"
-                android:src="@drawable/game2_tens"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_tens"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/tens_representation10"
-                android:src="@drawable/game2_tens"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_tens"
+                android:visibility="invisible" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/ones_layout_odd"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.3"
             android:layout_marginLeft="20dp"
+            android:layout_weight="0.3"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/ones_representation1"
-                android:src="@drawable/game2_ones"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_ones"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/ones_representation2"
-                android:src="@drawable/game2_ones"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_ones"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/ones_representation3"
-                android:src="@drawable/game2_ones"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_ones"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/ones_representation4"
-                android:src="@drawable/game2_ones"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_ones"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/ones_representation5"
-                android:src="@drawable/game2_ones"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_ones"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/ones_representation6"
-                android:src="@drawable/game2_ones"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_ones"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/ones_representation7"
-                android:src="@drawable/game2_ones"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_ones"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/ones_representation8"
-                android:src="@drawable/game2_ones"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_ones"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/ones_representation9"
-                android:src="@drawable/game2_ones"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_ones"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/ones_representation10"
-                android:src="@drawable/game2_ones"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.1"
                 android:layout_height="0dp"
-                android:visibility="invisible"/>
+                android:layout_weight="0.1"
+                android:src="@drawable/game2_ones"
+                android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.4"
         android:layout_gravity="center_horizontal"
+        android:layout_weight="0.4"
         android:orientation="horizontal">
+
         <RelativeLayout
             android:id="@+id/rel_answer0"
             android:layout_width="wrap_content"
@@ -288,23 +328,26 @@
             android:layout_weight="1"
             android:clickable="true"
             android:onClick="checkAnswer">
+
             <ImageView
                 android:id="@+id/img_answer0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/blank_sign"/>
+                android:src="@drawable/blank_sign" />
+
             <TextView
                 android:id="@+id/tv_answer0"
-                android:text="0"
-                android:textSize="50sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/img_answer0"
                 android:layout_alignRight="@+id/img_answer0"
                 android:layout_marginTop="23sp"
                 android:gravity="center_horizontal"
-                android:visibility="invisible"/>
+                android:text="0"
+                android:textSize="50sp"
+                android:visibility="invisible" />
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/rel_answer1"
             android:layout_width="wrap_content"
@@ -312,23 +355,26 @@
             android:layout_weight="1"
             android:clickable="true"
             android:onClick="checkAnswer">
+
             <ImageView
                 android:id="@+id/img_answer1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/blank_sign"/>
+                android:src="@drawable/blank_sign" />
+
             <TextView
                 android:id="@+id/tv_answer1"
-                android:text="0"
-                android:textSize="50sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/img_answer1"
                 android:layout_alignRight="@+id/img_answer1"
                 android:layout_marginTop="23sp"
                 android:gravity="center_horizontal"
-                android:visibility="invisible"/>
+                android:text="0"
+                android:textSize="50sp"
+                android:visibility="invisible" />
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/rel_answer2"
             android:layout_width="wrap_content"
@@ -336,22 +382,24 @@
             android:layout_weight="1"
             android:clickable="true"
             android:onClick="checkAnswer">
+
             <ImageView
                 android:id="@+id/img_answer2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/blank_sign"/>
+                android:src="@drawable/blank_sign" />
+
             <TextView
                 android:id="@+id/tv_answer2"
-                android:text="0"
-                android:textSize="50sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/img_answer2"
                 android:layout_alignRight="@+id/img_answer2"
                 android:layout_marginTop="23sp"
                 android:gravity="center_horizontal"
-                android:visibility="invisible"/>
+                android:text="0"
+                android:textSize="50sp"
+                android:visibility="invisible" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

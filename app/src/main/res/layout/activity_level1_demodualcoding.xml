@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+ Copyright 2016, 2019 MyOralVillage
+ All Rights Reserved
+ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,76 +12,81 @@
         android:id="@+id/relativeLayout1"
         android:layout_width="wrap_content"
         android:layout_height="60dip"
-        android:layout_gravity="top" >
+        android:layout_gravity="top">
+
         <ImageButton
             android:id="@+id/skip_button"
             android:layout_width="50dip"
             android:layout_height="50dip"
-            android:text="@string/false_button"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dip"
             android:layout_marginTop="10dip"
-            android:layout_alignParentLeft="true"
             android:background="@drawable/skip_button"
-            android:onClick="exitDemo" />
+            android:onClick="exitDemo"
+            android:text="@string/false_button" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.1"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.1">
+
         <ImageButton
             android:id="@+id/btn_lvl1_dualCoding_previous"
-            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:background="@drawable/demo_next_left_arrow_black"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
+            android:background="@drawable/demo_next_left_arrow_black"
             android:onClick="prevNumber"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.3"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.3">
+
         <ImageView
             android:id="@+id/img_representation"
-            android:src="@drawable/game1_dualcoding_0"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="10dip"
-            android:visibility="visible"/>
+            android:src="@drawable/game1_dualcoding_0"
+            android:visibility="visible" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.3"
-        android:layout_gravity="center_vertical">
-    <ImageView
-        android:id="@+id/img_number"
-        android:src="@drawable/game1_demo_dualcoding_0"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dip"
-        android:visibility="visible"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.1"
         android:layout_gravity="center_vertical"
+        android:layout_weight="0.3">
+
+        <ImageView
+            android:id="@+id/img_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dip"
+            android:src="@drawable/game1_demo_dualcoding_0"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.1"
         android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/btn_lvl1_dualCoding_next"
-            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:background="@drawable/demo_next_right_arrow_black"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:visibility="visible"
-            android:onClick="nextNumber"/>
+            android:background="@drawable/demo_next_right_arrow_black"
+            android:onClick="nextNumber"
+            android:visibility="visible" />
     </LinearLayout>
 
 </LinearLayout>

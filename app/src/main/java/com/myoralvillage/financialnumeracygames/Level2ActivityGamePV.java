@@ -1,3 +1,8 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.content.Intent;
@@ -40,11 +45,11 @@ public class Level2ActivityGamePV extends GenericActivityGame {
     //right now, because there are no users, we'll set this to 0
     //(user starts from easiest level)
     public int difficultyLevel = 0;
-    public Integer[][][] problems = {{{10,1,100},{2,200,20},{500,50,5},{900,9,90},{60,600,6},{7,70,700},{300,30,3},{80,8,800},{4,400,40},{1,9,7},{9,4,6},{7,8,9},{10,90,70},{90,40,60},{70,80,90},{100,900,700},{900,400,600},{700,800,900},{30,5,600},{700,9,10}},{{25,20,5},{82,80,2},{79,70,9},{21,11,31},{53,63,43},{84,74,94},{66,65,67},{34,35,33},{98,99,97},{81,18,19},{12,21,23},{75,57,58},{79,97,78},{43,42,44},{49,94,48},{66,56,67},{22,33,11},{71,17,72},{25,52,26},{69,96,68},},{{852,500,800},{583,500,800},{298,200,900},{230,200,30},{905,900,5},{370,300,70},{348,843,308},{910,190,901},{452,204,254},{976,679,769},{531,134,351},{86,68,67},{79,97,78},{43,42,44},{900,90,9},{66,860,680},{989,898,998},{494,949,499},{255,552,522},{171,717,117}}};
+    public Integer[][][] problems = {{{10, 1, 100}, {2, 200, 20}, {500, 50, 5}, {900, 9, 90}, {60, 600, 6}, {7, 70, 700}, {300, 30, 3}, {80, 8, 800}, {4, 400, 40}, {1, 9, 7}, {9, 4, 6}, {7, 8, 9}, {10, 90, 70}, {90, 40, 60}, {70, 80, 90}, {100, 900, 700}, {900, 400, 600}, {700, 800, 900}, {30, 5, 600}, {700, 9, 10}}, {{25, 20, 5}, {82, 80, 2}, {79, 70, 9}, {21, 11, 31}, {53, 63, 43}, {84, 74, 94}, {66, 65, 67}, {34, 35, 33}, {98, 99, 97}, {81, 18, 19}, {12, 21, 23}, {75, 57, 58}, {79, 97, 78}, {43, 42, 44}, {49, 94, 48}, {66, 56, 67}, {22, 33, 11}, {71, 17, 72}, {25, 52, 26}, {69, 96, 68},}, {{852, 500, 800}, {583, 500, 800}, {298, 200, 900}, {230, 200, 30}, {905, 900, 5}, {370, 300, 70}, {348, 843, 308}, {910, 190, 901}, {452, 204, 254}, {976, 679, 769}, {531, 134, 351}, {86, 68, 67}, {79, 97, 78}, {43, 42, 44}, {900, 90, 9}, {66, 860, 680}, {989, 898, 998}, {494, 949, 499}, {255, 552, 522}, {171, 717, 117}}};
     public int problemNumber = -1;
     public List<List<Integer>> questions = new ArrayList<>();
 
-    public int correctAnswer=0;
+    public int correctAnswer = 0;
     public boolean correctOnFirstTry = true;
     public int numCorrect = 0;
     public List<Integer> correctList = new ArrayList<>();
@@ -70,14 +75,14 @@ public class Level2ActivityGamePV extends GenericActivityGame {
 
         userHasViewedDemo = thisUser.demosViewed[5];
 
-        Typeface myTypeFace = Typeface.createFromAsset(getAssets(),"fonts/TanzaFont.ttf");
-        TextView myTextView = (TextView)findViewById(R.id.tv_answer0);
+        Typeface myTypeFace = Typeface.createFromAsset(getAssets(), "fonts/TanzaFont.ttf");
+        TextView myTextView = (TextView) findViewById(R.id.tv_answer0);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.tv_answer1);
+        myTextView = (TextView) findViewById(R.id.tv_answer1);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.tv_answer2);
+        myTextView = (TextView) findViewById(R.id.tv_answer2);
         myTextView.setTypeface(myTypeFace);
-        if(!userHasViewedDemo) {
+        if (!userHasViewedDemo) {
             startDemo();
             thisUser.demosViewed[5] = true;
         }
@@ -90,7 +95,7 @@ public class Level2ActivityGamePV extends GenericActivityGame {
         startActivity(intent);
     }
 
-    public void startNewRound () {
+    public void startNewRound() {
         scoringNumAttempts = 0;
         scoringCorrect = "error";
         scoringSelectedAnswer = "error";
@@ -104,14 +109,14 @@ public class Level2ActivityGamePV extends GenericActivityGame {
         clearLinearLayouts();
         clearImageViews();
 
-        if(questions.size()==0) {
+        if (questions.size() == 0) {
             questions = generateQuestions(problems[difficultyLevel]);
         }
         do {
             Random rand = new Random();
             int randInt = questions.size();
             problemNumber = rand.nextInt(randInt);
-        } while (questions.get(problemNumber)==null);
+        } while (questions.get(problemNumber) == null);
         generateRepresentation();
     }
 
@@ -137,7 +142,7 @@ public class Level2ActivityGamePV extends GenericActivityGame {
 
     public void clearImageViews() {
         for (int i = 1; i <= 10; i++) {
-            String imgView_name_ones = "ones_representation"+i;
+            String imgView_name_ones = "ones_representation" + i;
             int res_id_ones = getResources().getIdentifier(imgView_name_ones, "id", getPackageName());
             ImageView iv_ones = (ImageView) findViewById(res_id_ones);
             iv_ones.setVisibility(View.INVISIBLE);
@@ -146,7 +151,7 @@ public class Level2ActivityGamePV extends GenericActivityGame {
             onesParams.gravity = Gravity.CENTER;
             iv_ones.setLayoutParams(onesParams);
 
-            String imgView_name_tens = "tens_representation"+i;
+            String imgView_name_tens = "tens_representation" + i;
             int res_id_tens = getResources().getIdentifier(imgView_name_tens, "id", getPackageName());
             ImageView iv_tens = (ImageView) findViewById(res_id_tens);
             iv_tens.setVisibility(View.INVISIBLE);
@@ -155,7 +160,7 @@ public class Level2ActivityGamePV extends GenericActivityGame {
             tensParams.gravity = Gravity.CENTER;
             iv_tens.setLayoutParams(tensParams);
 
-            String imgView_name_hundreds = "hundreds_representation"+i;
+            String imgView_name_hundreds = "hundreds_representation" + i;
             int res_id_hundreds = getResources().getIdentifier(imgView_name_hundreds, "id", getPackageName());
             ImageView iv_hundreds = (ImageView) findViewById(res_id_hundreds);
             iv_hundreds.setVisibility(View.INVISIBLE);
@@ -165,6 +170,7 @@ public class Level2ActivityGamePV extends GenericActivityGame {
             iv_hundreds.setLayoutParams(hundredsParams);
         }
     }
+
     public void generateRepresentation() {
         //maximum 9 images (90, 900, 9000)
         //int pv=randomPlaceValue.nextInt(3)+1;
@@ -180,9 +186,9 @@ public class Level2ActivityGamePV extends GenericActivityGame {
 
     public List<List<Integer>> generateQuestions(Integer[][] a) {
         List<List<Integer>> c = new ArrayList<>(a.length);
-        for(int i = 0; i < a.length; i++) {
+        for (int i = 0; i < a.length; i++) {
             List<Integer> temp = new ArrayList<>();
-            for(int j = 0; j < a[i].length; j++) {
+            for (int j = 0; j < a[i].length; j++) {
                 temp.add(a[i][j]);
             }
             c.add(temp);
@@ -190,17 +196,17 @@ public class Level2ActivityGamePV extends GenericActivityGame {
         return c;
     }
 
-    public int[] getRepresentation(){
-        int ones = correctAnswer%10;
-        int tens = ((correctAnswer%100)-(correctAnswer%10))/10;
-        int hundreds = (correctAnswer-(correctAnswer%100))/100;
-        int[] representation = {hundreds,tens,ones};
+    public int[] getRepresentation() {
+        int ones = correctAnswer % 10;
+        int tens = ((correctAnswer % 100) - (correctAnswer % 10)) / 10;
+        int hundreds = (correctAnswer - (correctAnswer % 100)) / 100;
+        int[] representation = {hundreds, tens, ones};
         return representation;
     }
 
     public void drawRepresentation(int[] representation) {
         int numPVs = 0;
-        if(representation[2]==0) {
+        if (representation[2] == 0) {
             int llOnes = getResources().getIdentifier("ones_layout_odd", "id", getPackageName());
             LinearLayout ll_ones = (LinearLayout) findViewById(llOnes);
             LinearLayout.LayoutParams onesLLParams = (LinearLayout.LayoutParams) ll_ones.getLayoutParams();
@@ -209,7 +215,7 @@ public class Level2ActivityGamePV extends GenericActivityGame {
         } else {
             numPVs++;
         }
-        if(representation[1]==0) {
+        if (representation[1] == 0) {
             int llTens = getResources().getIdentifier("tens_layout_odd", "id", getPackageName());
             LinearLayout ll_tens = (LinearLayout) findViewById(llTens);
             LinearLayout.LayoutParams tensLLParams = (LinearLayout.LayoutParams) ll_tens.getLayoutParams();
@@ -218,7 +224,7 @@ public class Level2ActivityGamePV extends GenericActivityGame {
         } else {
             numPVs++;
         }
-        if(representation[0]==0) {
+        if (representation[0] == 0) {
             int llHundreds = getResources().getIdentifier("hundreds_layout_odd", "id", getPackageName());
             LinearLayout ll_hundreds = (LinearLayout) findViewById(llHundreds);
             LinearLayout.LayoutParams hundredsLLParams = (LinearLayout.LayoutParams) ll_hundreds.getLayoutParams();
@@ -228,22 +234,22 @@ public class Level2ActivityGamePV extends GenericActivityGame {
             numPVs++;
         }
 
-        if(representation[2]>0) {
+        if (representation[2] > 0) {
             int llOnes = getResources().getIdentifier("ones_layout_odd", "id", getPackageName());
             LinearLayout ll_ones = (LinearLayout) findViewById(llOnes);
             LinearLayout.LayoutParams onesLLParams = (LinearLayout.LayoutParams) ll_ones.getLayoutParams();
-            onesLLParams.weight = (float) (1.0/(double)numPVs);
+            onesLLParams.weight = (float) (1.0 / (double) numPVs);
             ll_ones.setLayoutParams(onesLLParams);
 
         }
-        if(representation[1]>0) {
+        if (representation[1] > 0) {
             int llTens = getResources().getIdentifier("tens_layout_odd", "id", getPackageName());
             LinearLayout ll_tens = (LinearLayout) findViewById(llTens);
             LinearLayout.LayoutParams tensLLParams = (LinearLayout.LayoutParams) ll_tens.getLayoutParams();
-            tensLLParams.weight = (float) (1.0/(double)numPVs);
+            tensLLParams.weight = (float) (1.0 / (double) numPVs);
             ll_tens.setLayoutParams(tensLLParams);
         }
-        if(representation[0]>0) {
+        if (representation[0] > 0) {
             int llHundreds = getResources().getIdentifier("hundreds_layout_odd", "id", getPackageName());
             LinearLayout ll_hundreds = (LinearLayout) findViewById(llHundreds);
             LinearLayout.LayoutParams hundredsLLParams = (LinearLayout.LayoutParams) ll_hundreds.getLayoutParams();
@@ -252,18 +258,18 @@ public class Level2ActivityGamePV extends GenericActivityGame {
         }
 
         for (int i = 1; i <= representation[2]; i++) {
-            String imgView_name = "ones_representation"+i;
+            String imgView_name = "ones_representation" + i;
             int res_id = getResources().getIdentifier(imgView_name, "id", getPackageName());
             ImageView iv = (ImageView) findViewById(res_id);
 
-            Drawable dBle = ContextCompat.getDrawable(this,R.drawable.game2_ones);
+            Drawable dBle = ContextCompat.getDrawable(this, R.drawable.game2_ones);
             Bitmap bMap = ((BitmapDrawable) dBle).getBitmap();
 
             iv.requestLayout();
             iv.setImageBitmap(bMap);
             iv.setTag("game2_ones");
             LinearLayout.LayoutParams onesParams = (LinearLayout.LayoutParams) iv.getLayoutParams();
-            onesParams.weight = (float)(1.0/(double)representation[2]);
+            onesParams.weight = (float) (1.0 / (double) representation[2]);
             onesParams.gravity = Gravity.CENTER;
 
             iv.setLayoutParams(onesParams);
@@ -271,18 +277,18 @@ public class Level2ActivityGamePV extends GenericActivityGame {
         }
 
         for (int i = 1; i <= representation[1]; i++) {
-            String imgView_name = "tens_representation"+i;
+            String imgView_name = "tens_representation" + i;
             int res_id = getResources().getIdentifier(imgView_name, "id", getPackageName());
             ImageView iv = (ImageView) findViewById(res_id);
 
-            Drawable dBle = ContextCompat.getDrawable(this,R.drawable.game2_tens);
+            Drawable dBle = ContextCompat.getDrawable(this, R.drawable.game2_tens);
             Bitmap bMap = ((BitmapDrawable) dBle).getBitmap();
 
             iv.requestLayout();
             iv.setImageBitmap(bMap);
             iv.setTag("game2_tens");
             LinearLayout.LayoutParams tensParams = (LinearLayout.LayoutParams) iv.getLayoutParams();
-            tensParams.weight = (float)(1.0/(double)representation[1]);
+            tensParams.weight = (float) (1.0 / (double) representation[1]);
 
             tensParams.gravity = Gravity.CENTER;
 
@@ -291,18 +297,18 @@ public class Level2ActivityGamePV extends GenericActivityGame {
         }
 
         for (int i = 1; i <= representation[0]; i++) {
-            String imgView_name = "hundreds_representation"+i;
+            String imgView_name = "hundreds_representation" + i;
             int res_id = getResources().getIdentifier(imgView_name, "id", getPackageName());
             ImageView iv = (ImageView) findViewById(res_id);
 
-            Drawable dBle = ContextCompat.getDrawable(this,R.drawable.game2_hundreds);
+            Drawable dBle = ContextCompat.getDrawable(this, R.drawable.game2_hundreds);
             Bitmap bMap = ((BitmapDrawable) dBle).getBitmap();
 
             iv.requestLayout();
             iv.setImageBitmap(bMap);
             iv.setTag("game2_hundreds");
             LinearLayout.LayoutParams hundredsParams = (LinearLayout.LayoutParams) iv.getLayoutParams();
-            hundredsParams.weight = (float)(1.0/(double)representation[0]);
+            hundredsParams.weight = (float) (1.0 / (double) representation[0]);
 
             hundredsParams.gravity = Gravity.CENTER;
 
@@ -316,15 +322,15 @@ public class Level2ActivityGamePV extends GenericActivityGame {
         int wrongAnswer2 = answers.get(2);
 
         String[] filenames = new String[3];
-        filenames[0] = "game2_answer"+wrongAnswer1;
-        filenames[1] = "game2_answer"+wrongAnswer2;
-        filenames[2] = "game2_answer"+correctAnswer;
+        filenames[0] = "game2_answer" + wrongAnswer1;
+        filenames[1] = "game2_answer" + wrongAnswer2;
+        filenames[2] = "game2_answer" + correctAnswer;
 
         scoringAnswers[0] = String.valueOf(wrongAnswer1);
         scoringAnswers[1] = String.valueOf(wrongAnswer2);
         scoringAnswers[2] = String.valueOf(correctAnswer);
 
-        int[] takenPositions = {-1,-1,-1};
+        int[] takenPositions = {-1, -1, -1};
         displayAnswers(answers, takenPositions);
 
     }
@@ -334,23 +340,24 @@ public class Level2ActivityGamePV extends GenericActivityGame {
 
             Random answerR = new Random();
             int answerPosition = -1;
-            if (i==0) {
+            if (i == 0) {
                 answerPosition = answerR.nextInt(3);
             } else {
                 do {
                     answerPosition = answerR.nextInt(3);
-                } while (answerPosition==takenPositions[0]||answerPosition==takenPositions[1]);
+                }
+                while (answerPosition == takenPositions[0] || answerPosition == takenPositions[1]);
             }
-            takenPositions[i]=answerPosition;
+            takenPositions[i] = answerPosition;
 
-            String tvName = "tv_answer"+answerPosition;
+            String tvName = "tv_answer" + answerPosition;
             int resourceId = getResources().getIdentifier(tvName, "id", getPackageName());
             TextView tv = (TextView) findViewById(resourceId);
             tv.setText(String.valueOf(answers.get(i)));
             tv.setVisibility(tv.VISIBLE);
 
-            String rlName = "rel_answer"+answerPosition;
-            int resourceIdRL= getResources().getIdentifier(rlName, "id", getPackageName());
+            String rlName = "rel_answer" + answerPosition;
+            int resourceIdRL = getResources().getIdentifier(rlName, "id", getPackageName());
             RelativeLayout rl = (RelativeLayout) findViewById(resourceIdRL);
             rl.setVisibility(View.VISIBLE);
             rl.setClickable(true);
@@ -366,15 +373,15 @@ public class Level2ActivityGamePV extends GenericActivityGame {
 
         scoringSelectedAnswer = String.valueOf(thisNumber);
 
-        if (thisNumber==correctAnswer) {
+        if (thisNumber == correctAnswer) {
             scoringCorrect = "correct";
             writeToScore("level2pv.txt");
-            if(correctOnFirstTry) {
-                if(!correctList.contains(problemNumber)) {
+            if (correctOnFirstTry) {
+                if (!correctList.contains(problemNumber)) {
                     numCorrect++;
                 }
                 correctList.add(problemNumber);
-                questions.set(problemNumber,null);
+                questions.set(problemNumber, null);
                 String score_name = "star" + numCorrect;
                 int score_id = getResources().getIdentifier(score_name, "drawable", getPackageName());
                 ImageView tv_score = (ImageView) findViewById(R.id.score);
@@ -390,10 +397,10 @@ public class Level2ActivityGamePV extends GenericActivityGame {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if(numCorrect>=10 && difficultyLevel < 2) {
+                    if (numCorrect >= 10 && difficultyLevel < 2) {
                         thisUser.activityProgress[5] = true;
                         difficultyLevel++;
-                        numCorrect=0;
+                        numCorrect = 0;
                         String score_name = "star" + numCorrect;
                         int score_id = getResources().getIdentifier(score_name, "drawable", getPackageName());
                         ImageView tv_score = (ImageView) findViewById(R.id.score);
@@ -401,7 +408,7 @@ public class Level2ActivityGamePV extends GenericActivityGame {
                         correctList.clear();
                         questions.clear();
                         startNewRound();
-                    } else if (numCorrect>=10 && difficultyLevel >= 2) {
+                    } else if (numCorrect >= 10 && difficultyLevel >= 2) {
                         onBackPressed();
                     } else {
                         startNewRound();
@@ -412,7 +419,7 @@ public class Level2ActivityGamePV extends GenericActivityGame {
         } else {
             scoringCorrect = "incorrect";
             writeToScore("level2pv.txt");
-            v.setAlpha((float)0.5);
+            v.setAlpha((float) 0.5);
             v.setClickable(false);
             correctOnFirstTry = false;
         }
@@ -420,7 +427,7 @@ public class Level2ActivityGamePV extends GenericActivityGame {
 
     @Override
     public void onBackPressed() {
-        if(!thisUser.userName.equals("admin")) {
+        if (!thisUser.userName.equals("admin")) {
             updateUserSettings();
         }
         backButtonPressed = true;

@@ -1,3 +1,8 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.graphics.Typeface;
@@ -32,27 +37,27 @@ public class Level2ActivityDemoOrdering extends GenericActivityGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level2_demoordering);
-        Typeface myTypeFace = Typeface.createFromAsset(getAssets(),"fonts/TanzaFont.ttf");
-        TextView myTextView = (TextView)findViewById(R.id.optionView0);
+        Typeface myTypeFace = Typeface.createFromAsset(getAssets(), "fonts/TanzaFont.ttf");
+        TextView myTextView = (TextView) findViewById(R.id.optionView0);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.optionView1);
+        myTextView = (TextView) findViewById(R.id.optionView1);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.optionView2);
+        myTextView = (TextView) findViewById(R.id.optionView2);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.optionView3);
+        myTextView = (TextView) findViewById(R.id.optionView3);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.sequenceView0);
+        myTextView = (TextView) findViewById(R.id.sequenceView0);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.sequenceView1);
+        myTextView = (TextView) findViewById(R.id.sequenceView1);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.sequenceView2);
+        myTextView = (TextView) findViewById(R.id.sequenceView2);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.sequenceView3);
+        myTextView = (TextView) findViewById(R.id.sequenceView3);
         myTextView.setTypeface(myTypeFace);
         startDemo();
     }
 
-    public void startDemo(){
+    public void startDemo() {
         mSkip = (ImageButton) findViewById(R.id.skip_button);
         final ImageView finger1 = (ImageView) findViewById(R.id.finger1);
         final ImageView finger3 = (ImageView) findViewById(R.id.finger3);
@@ -139,7 +144,6 @@ public class Level2ActivityDemoOrdering extends GenericActivityGame {
         });
 
 
-
         finger3.setVisibility(View.VISIBLE);
         final AnimationSet secondAnimationSet = new AnimationSet(true);
 
@@ -205,8 +209,6 @@ public class Level2ActivityDemoOrdering extends GenericActivityGame {
         });
 
 
-
-
         finger4.setVisibility(View.VISIBLE);
         final AnimationSet thirdAnimationSet = new AnimationSet(true);
 
@@ -270,9 +272,6 @@ public class Level2ActivityDemoOrdering extends GenericActivityGame {
                 //lp.leftMargin = 400;
             }
         });
-
-
-
 
 
         finger2.setVisibility(View.VISIBLE);

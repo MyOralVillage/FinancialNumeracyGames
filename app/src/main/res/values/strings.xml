@@ -1,9 +1,13 @@
+<!--
+ Copyright 2016, 2019 MyOralVillage
+ All Rights Reserved
+ -->
 <resources>
     <string name="app_name">FinancialNumeracyGames</string>
 
-    <string name="btn_lvl1_text">0-9</string>
-    <string name="btn_lvl2_text">10-9999</string>
-    <string name="btn_lvl3_text">10000-10000000</string>
+    <string name="btn_lvl1_text">0&#8211;9</string>
+    <string name="btn_lvl2_text">10&#8211;9999</string>
+    <string name="btn_lvl3_text">10000&#8211;10000000</string>
 
     <string name="true_button">Prev</string>
     <string name="false_button">Next</string>
@@ -49,4 +53,80 @@
     <string name="tens">10</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_level2">Level2Activity</string>
+
+    <!--
+        The following are locale and county specific information. To add a new locale, create
+        the appropriate directory, add a strings.xml file, and translate these
+        strings (and only these strings) for the appropriate locale
+
+        Similarly, to add a new country change the following information to be appropriate
+
+        Note that locale and country are, for the moment, essentially identical
+
+        TODO: locale is settable on the user device, country can come from the SIM card. I do not know
+        TODO: how to test the sim card and it may be unnecessary anyway
+        -->
+    <!-- Error messages. These should NOT be user visible and so do not need to be localized -->
+    <string name="negative_error_message">"Number must be positive"</string>
+    <string name="cannot_canonicalize">Number can NOT be represented in bills given</string>
+    <string name="cannot_make_directory">Could not create directory</string>
+
+    <!-- Country specific format for currency -->
+    <string name="Money_format">%.0f /-Tsh</string>
+
+    <!-- Country specific values of the currencies
+         Will be converted to a floating point value
+
+         The value should be in the currency. So,
+         a 0.5 rupee note would be 0.5,  a 2 rupee bill would be 2
+
+         Note that there currently MUST be 5 entries and
+         they MUST be in ascending order
+         TODO - Change both of above assumptions
+
+         They also MUST match the bills cur_1, cur_2 .., cur_9 or the user will be VERY confused :-)
+         -->
+    <string-array name="Value_Each_Currency">
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>5000</item>
+        <item>10000</item>
+    </string-array>
+
+    <!--
+        Cannot create an array of arrays so create a single dimensional array with elements separated by commas
+        The first element is the name (basically just a comment at this point, it is used in any errors reported)
+        the second element is the price of the item as a floating point number. This is used in BOTH currency games
+        The third element is the amount given in the Change currency game
+
+        Note that BOTH the first and second element MUST be able to be EXACTLY expressed in the currency units.
+        So, for example, if the lowest bill is 100 then ALL amounts must be in multiples of 100.
+
+        Also, the second number MUST be strictly greater than the first
+        TODO : Do we want to allow the second to be identical to the first? Ie, allow a person to expect
+               to receive NO change
+
+        -->
+
+    <string-array name="Currency_tests">
+        <item>basket_corn,2500f,5500f</item>
+        <item>bananas,500f,1000f</item>
+        <item>basket_fish,5500f,7000f</item>
+        <item>basketoranges,3500f,5000f</item>
+    </string-array>
+
+    <!--
+      This demo contains an item that can be bought with exactly two units of currency
+      Set the price here but make very sure that the first amount represents exactly TWO
+      different bills
+
+      The second number is used in the change game. Note that the change must ALSO be representable by
+      two different bills.
+      -->
+
+    <string name="Currency_demo">
+        basket_corn,2500f,5500f
+    </string>
+
 </resources>

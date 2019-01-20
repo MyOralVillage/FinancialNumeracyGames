@@ -1,5 +1,12 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
+
 package com.myoralvillage.financialnumeracygames;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,6 +39,89 @@ import android.widget.TextView;
  */
 
 public abstract class CurrencyActivityGame extends GenericActivityGame {
+
+    /*
+     * This is a helper function. It takes a value in currency and comes up with the most
+     * efficient set of bills to make up that currency
+     *
+     * Eg, 7,500 might be 1 5,000, 1 2,000 and 1 500
+     *
+     * Note that it is a major error for the amount to NOT be able to represented by
+     * the units of a currency
+     *
+     * Because float arithmetic positively sucks, we instead calculate in integers using pennies.
+     *
+     * TODO : This fundamentlly assumes that an integer is large enough to hold all values in pennies.
+     *        This probably isn't true of countries with hyperinflation (eg, Brazil).
+     *
+     */
+
+    /*
+     * I want a single entry point to handle errors.
+     *
+     * At the very least, an error is going to be locale specific
+     *
+     * But I think as well as text I'm going to want to add a picture for each error message.
+     *
+     * TODO: Add some kind of pop up picture since our target audience IS illiterate
+     */
+
+
+    public int[] input_canonicalize(float val) {
+        System.out.println("input canonicalize Val is " + val);
+        if (val < 0.0) {
+            displayError(R.string.negative_error_message);
+            return null;
+        }
+
+        int[] num_vals = new int[cash_units.length];
+        for (int i = 0; i < cash_units.length; i++) {
+            num_vals[i] = 0;
+        }
+
+        /*
+         * Unfortunately, inaccuracies creep into our calculations with floats
+         *
+         * The following assumes that the float values have EXACTLY 2 digits (for cents).
+         * I'm pretty sure that this is a safe assumption worldwide.
+         *
+         * TODO: BitCoin and the like??
+         *
+         * So, we do all our math on integers that represent pennies. Sigh.
+         */
+
+        /*
+         * From now on we are going to do all calculations in pennies.
+         */
+        int val_in_cents = (int) (val * 100 + 0.0001f);
+        /*
+         * Iterate over currency units in order from highest value to lowest value
+         *
+         * At the moment this is hardcoded assuming currency units go from left to right in ascending order
+         *
+         * TODO : Make sure this can handle currencies done in the reverse order
+         * TODO : Definitely need to add unit tests to test currencies to ensure assumptions are met
+         */
+        for (int i = cash_units.length - 1; i >= 0; i--) {
+            PerCash cash_unit = cash_units[i];
+            System.out.println("Loop entry " + i + " bill has value " + cash_unit.value);
+            int cash_val_in_cents = (int) (cash_unit.value * 100);
+            System.out.println("cash val in cents is " + cash_val_in_cents + " while val is now " + val_in_cents);
+            if (val_in_cents < cash_val_in_cents) {
+                continue;
+            }
+            int num = (val_in_cents / cash_val_in_cents);
+            val_in_cents -= num * cash_val_in_cents;
+            System.out.println("Decremented val to " + val_in_cents + " and num is " + num);
+            num_vals[i] = num;
+        }
+        if (val_in_cents > 0) {
+            displayError(R.string.cannot_canonicalize);
+        }
+        return num_vals;
+
+    }
+
     /*
      *
      * So, I need a class that has the appropriate information for each unit of cash
@@ -46,7 +136,7 @@ public abstract class CurrencyActivityGame extends GenericActivityGame {
      * files?
      */
 
-    public class PerCash {
+    public class PerCash { // Despite the warning this pretty much DOES have to be public
         TextView numView;  // The layout holding the number of paid items
         TextView paidView; // The layout holding the total amount paid
         ImageView paid;    // The actual drawable. Maybe?
@@ -59,93 +149,60 @@ public abstract class CurrencyActivityGame extends GenericActivityGame {
         float value;
         int drawable_id;
 
+
+        @SuppressLint("ClickableViewAccessibility")
         PerCash(int r_num, int r_paid_view, int r_paid, int r_bill, int r_snap,
-                String r_nam) {
-            numView = (TextView) findViewById(r_num);
-            paidView = (TextView) findViewById(r_paid_view);
-            paid = (ImageView) findViewById(r_paid);
-            bill =  (ImageView) findViewById(r_bill);
-            snap = (ImageView) findViewById(r_snap);
+                String r_nam, int drawable, float val) {
+            numView =  findViewById(r_num);
+            paidView =  findViewById(r_paid_view);
+            paid =  findViewById(r_paid);
+            bill =   findViewById(r_bill);
+            snap =  findViewById(r_snap);
             num = 0;
             resource_name = r_nam;
-        }
-
-        /*
-         * And this sets the currency specific values. It makes the calling
-         * code MUCH clearer to separate these out
-         */
-
-        void country_specific(int drawable, float val) {
             value = val;
             drawable_id = drawable;
-            bill.setImageDrawable(getDrawable(drawable_id));
+            bill.setImageDrawable(getResources().getDrawable(drawable_id));
             bill.setOnTouchListener(new ChoiceTouchListener());
         }
     }
 
-    PerCash[] cash_units;
+    public void advanceGame(View v) {
+        finish();
+    }
 
-    String format_string;  // Used to print the locale and currency specific numbers.
+    public PerCash[] cash_units;
+
+    String format_string; // Used to print the locale and currency specific numbers.
+    String[] money_values;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level3_currency_games);
+        format_string = getString(R.string.Money_format);
+        money_values = getResources().getStringArray(R.array.Value_Each_Currency);
         cash_units = new PerCash[] {
                 new PerCash(R.id.currency_1_num, R.id.currency_1_paidview, R.id.currency_1_paid,
                         R.id.currency_1_bill, R.id.currency_1_billSnap,
-                        "com.myoralvillage.financialnumeracygames:id/currency_1_bill"),
+                        "com.myoralvillage.financialnumeracygames:id/currency_1_bill",
+                        R.drawable.cur_1, Float.parseFloat(money_values[0])),
                 new PerCash(R.id.currency_2_num, R.id.currency_2_paidview, R.id.currency_2_paid,
                         R.id.currency_2_bill, R.id.currency_2_billSnap,
-                        "com.myoralvillage.financialnumeracygames:id/currency_2_bill"),
+                        "com.myoralvillage.financialnumeracygames:id/currency_2_bill",
+                        R.drawable.cur_2, Float.parseFloat(money_values[1])),
                 new PerCash(R.id.currency_3_num, R.id.currency_3_paidview, R.id.currency_3_paid,
                         R.id.currency_3_bill, R.id.currency_3_billSnap,
-                        "com.myoralvillage.financialnumeracygames:id/currency_3_bill"),
+                        "com.myoralvillage.financialnumeracygames:id/currency_3_bill",
+                        R.drawable.cur_3, Float.parseFloat(money_values[2])),
                 new PerCash(R.id.currency_4_num, R.id.currency_4_paidview, R.id.currency_4_paid,
                         R.id.currency_4_bill, R.id.currency_4_billSnap,
-                        "com.myoralvillage.financialnumeracygames:id/currency_4_bill"),
+                        "com.myoralvillage.financialnumeracygames:id/currency_4_bill",
+                        R.drawable.cur_4, Float.parseFloat(money_values[3])),
                 new PerCash(R.id.currency_5_num, R.id.currency_5_paidview, R.id.currency_5_paid,
                         R.id.currency_5_bill, R.id.currency_5_billSnap,
-                        "com.myoralvillage.financialnumeracygames:id/currency_5_bill"),
+                        "com.myoralvillage.financialnumeracygames:id/currency_5_bill",
+                        R.drawable.cur_5, Float.parseFloat(money_values[4]))
         };
-
-        /*
-         * Now we have to set the value for each national currency
-         *
-         * Note that ALL currencies are calculated as floating point numbers and
-         * just printed as decimal or whole integer numbers as appropriate
-         */
-        switch(thisUser.actual_country) {
-            case TONGA:
-                format_string = "$T %.2f";
-                cash_units[0].country_specific(R.drawable.pa_anga_50_senti, 0.5f);
-                cash_units[1].country_specific(R.drawable.pa_anga_1, 1f);
-                cash_units[2].country_specific(R.drawable.pa_anga_5, 5f);
-                cash_units[3].country_specific(R.drawable.pa_anga_10, 10f);
-                cash_units[4].country_specific(R.drawable.pa_anga_20, 20f);
-                break;
-
-            case VANUATU:
-                format_string = "%.0f VT";
-                cash_units[0].country_specific(R.drawable.vatu_100, 100.0f);
-                cash_units[1].country_specific(R.drawable.vatu_200, 200.0f);
-                cash_units[2].country_specific(R.drawable.vatu_500, 500.0f);
-                cash_units[3].country_specific(R.drawable.vatu_1000, 1000.0f);
-                cash_units[4].country_specific(R.drawable.vatu_5000, 5000.0f);
-                break;
-            case TANZANIA:
-                format_string = "%.0f /-Tsh";
-                cash_units[0].country_specific(R.drawable.shilling_500, 500.0f);
-                cash_units[1].country_specific(R.drawable.shilling_1000, 1000.0f);
-                cash_units[2].country_specific(R.drawable.shilling_2000, 2000.0f);
-                cash_units[3].country_specific(R.drawable.shilling_5000, 5000.0f);
-                cash_units[4].country_specific(R.drawable.shilling_10000, 10000.0f);
-                break;
-            default:
-                throw new AssertionError("Unrecognized Country");
-
-        }
     }
-
-    abstract public void advanceGame(View v);
 
     }

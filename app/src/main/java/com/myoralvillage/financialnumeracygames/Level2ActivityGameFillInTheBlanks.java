@@ -1,3 +1,9 @@
+/*
+ * Copyright My Oral Village
+ * 2016
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.content.Intent;
@@ -54,44 +60,44 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_level2_gamefillintheblanks);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_level2_gamefillintheblanks);
         Intent intent = getIntent();
         getExtras(intent);
 
         userHasViewedDemo = thisUser.demosViewed[3];
 
 
-        Typeface myTypeFace = Typeface.createFromAsset(getAssets(),"fonts/TanzaFont.ttf");
-        Button myButton = (Button)findViewById(R.id.optionView0);
+        Typeface myTypeFace = Typeface.createFromAsset(getAssets(), "fonts/TanzaFont.ttf");
+        Button myButton = (Button) findViewById(R.id.optionView0);
         myButton.setTypeface(myTypeFace);
-        myButton = (Button)findViewById(R.id.optionView1);
+        myButton = (Button) findViewById(R.id.optionView1);
         myButton.setTypeface(myTypeFace);
-        myButton = (Button)findViewById(R.id.optionView2);
+        myButton = (Button) findViewById(R.id.optionView2);
         myButton.setTypeface(myTypeFace);
-        TextView myTextView = (TextView)findViewById(R.id.sequenceView0);
+        TextView myTextView = (TextView) findViewById(R.id.sequenceView0);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.sequenceView1);
+        myTextView = (TextView) findViewById(R.id.sequenceView1);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.sequenceView2);
+        myTextView = (TextView) findViewById(R.id.sequenceView2);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.sequenceView3);
+        myTextView = (TextView) findViewById(R.id.sequenceView3);
         myTextView.setTypeface(myTypeFace);
 
-       if(!userHasViewedDemo) {
-           startDemo();
-           thisUser.demosViewed[3] = true;
-       }
-       generateSequence();
-   }
+        if (!userHasViewedDemo) {
+            startDemo();
+            thisUser.demosViewed[3] = true;
+        }
+        generateSequence();
+    }
 
-   public void startDemo() {
-       Intent intent = new Intent(this, Level2ActivityDemoFillInTheBlanks.class);
-       startActivity(intent);
+    public void startDemo() {
+        Intent intent = new Intent(this, Level2ActivityDemoFillInTheBlanks.class);
+        startActivity(intent);
     }
 
 
-    public void generateSequence(){
+    public void generateSequence() {
         correctOnFirstTry = true;
         scoringNumAttempts = 0;
         scoringCorrect = "error";
@@ -103,37 +109,33 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
 
         firstAttempt = true;
         //generate a random first number, a random pattern and store the sequence in an array
-        if(difficultyLevel < 2) {
+        if (difficultyLevel < 2) {
             if (numCorrect < 10) {
                 sequence[0] = randomFirstNumber.nextInt(89) + 10;
             }
-            if (numCorrect >=  10) {
+            if (numCorrect >= 10) {
                 difficultyLevel++;
                 numCorrect = 0;
                 thisUser.activityProgress[3] = true;
                 //sequence[0] = randomFirstNumber.nextInt(89) + 10;
             }
 
-        }
-
-        else if (difficultyLevel == 2) {
+        } else if (difficultyLevel == 2) {
             if (numCorrect < 10) {
                 sequence[0] = randomFirstNumber.nextInt(899) + 100;
             }
-            if (numCorrect >=  10) {
+            if (numCorrect >= 10) {
                 difficultyLevel++;
                 numCorrect = 0;
                 //sequence[0] = randomFirstNumber.nextInt(89) + 10;
             }
-        }
-
-        else {
+        } else {
             sequence[0] = randomFirstNumber.nextInt(941) + 10;
         }
 
 
         patternNumber = randomPattern.nextInt(4) + 2;
-        sequence[1] = sequence[0]+ patternNumber;
+        sequence[1] = sequence[0] + patternNumber;
         sequence[2] = sequence[1] + patternNumber;
         sequence[3] = sequence[2] + patternNumber;
         //generate a number that indicates the missing position
@@ -141,7 +143,7 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
         missingAnswer = randomMissingAnswer.nextInt(2);
 
         // generate options
-        if (missingAnswer==0) {
+        if (missingAnswer == 0) {
             options[0] = sequence[missingPosition];
             options[1] = (sequence[0] - patternNumber);
             options[2] = (sequence[3] + patternNumber);
@@ -164,43 +166,42 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
         }
     }
 
-    public void playGame(int[]sequence, int[] options, int missingPosition) {
+    public void playGame(int[] sequence, int[] options, int missingPosition) {
         // take the options array and display each number in a button at the bottom of the screen
         TextView sequenceView0 = (TextView) findViewById(R.id.sequenceView0);
-        if (sequence[missingPosition] == sequence[0]){
+        if (sequence[missingPosition] == sequence[0]) {
             sequenceView0.setText("_");
-            scoringQuestion += ","+"_";
-        }
-        else {
+            scoringQuestion += "," + "_";
+        } else {
             sequenceView0.setText(String.valueOf(sequence[0]));
-            scoringQuestion += ","+String.valueOf(sequence[0]);
+            scoringQuestion += "," + String.valueOf(sequence[0]);
         }
 
         TextView sequenceView1 = (TextView) findViewById(R.id.sequenceView1);
         if (sequence[missingPosition] == sequence[1]) {
             sequenceView1.setText("_");
-            scoringQuestion += ","+"_";
+            scoringQuestion += "," + "_";
         } else {
             sequenceView1.setText(String.valueOf(sequence[1]));
-            scoringQuestion += ","+String.valueOf(sequence[1]);
+            scoringQuestion += "," + String.valueOf(sequence[1]);
         }
 
         TextView sequenceView2 = (TextView) findViewById(R.id.sequenceView2);
         if (sequence[missingPosition] == sequence[2]) {
             sequenceView2.setText("_");
-            scoringQuestion += ","+"_";
+            scoringQuestion += "," + "_";
         } else {
             sequenceView2.setText(String.valueOf(sequence[2]));
-            scoringQuestion += ","+String.valueOf(sequence[2]);
+            scoringQuestion += "," + String.valueOf(sequence[2]);
         }
 
         TextView sequenceView3 = (TextView) findViewById(R.id.sequenceView3);
         if (sequence[missingPosition] == sequence[3]) {
             sequenceView3.setText("_");
-            scoringQuestion += ","+"_";
+            scoringQuestion += "," + "_";
         } else {
             sequenceView3.setText(String.valueOf(sequence[3]));
-            scoringQuestion += ","+String.valueOf(sequence[3]);
+            scoringQuestion += "," + String.valueOf(sequence[3]);
         }
         Button optionView0 = (Button) findViewById(R.id.optionView0);
         optionView0.setText(String.valueOf(options[0]));
@@ -218,9 +219,9 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
         scoringAnswers[0] = String.valueOf(options[0]);
         scoringAnswers[1] = String.valueOf(options[1]);
         scoringAnswers[2] = String.valueOf(options[2]);
-     }
+    }
 
-    public void checkThisAnswer (View v) {
+    public void checkThisAnswer(View v) {
         Button optionView0 = (Button) findViewById(R.id.optionView0);
         Button optionView1 = (Button) findViewById(R.id.optionView1);
         Button optionView2 = (Button) findViewById(R.id.optionView2);
@@ -231,12 +232,12 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
         Button mButton = (Button) findViewById(v.getId());
         int thisNumber = Integer.parseInt(mButton.getText().toString());
         scoringSelectedAnswer = String.valueOf(thisNumber);
-        if (thisNumber==sequence[missingPosition]){
+        if (thisNumber == sequence[missingPosition]) {
             optionView0.setClickable(false);
             optionView1.setClickable(false);
             optionView2.setClickable(false);
             scoringCorrect = "correct";
-            if(correctOnFirstTry==true) {
+            if (correctOnFirstTry == true) {
                 //numCorrect++;
                 String score_name = "star" + numCorrect;
                 int score_id = getResources().getIdentifier(score_name, "drawable", getPackageName());
@@ -257,7 +258,7 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
             sequenceView1.setText(String.valueOf(sequence[1]));
             sequenceView2.setText(String.valueOf(sequence[2]));
             sequenceView3.setText(String.valueOf(sequence[3]));
-            if(firstAttempt) {
+            if (firstAttempt) {
                 numCorrect++;
             }
 
@@ -271,13 +272,13 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
             }, 3050);
 
         } else {
-            correctOnFirstTry=false;
+            correctOnFirstTry = false;
             scoringCorrect = "incorrect";
             writeToScore("level2fillintheblanks.txt");
             firstAttempt = false;
             mButton.setClickable(false);
             mButton.setAlpha(.5f);
-            correctOnFirstTry=false;
+            correctOnFirstTry = false;
             optionView0.setClickable(true);
             optionView1.setClickable(true);
             optionView2.setClickable(true);
@@ -287,7 +288,7 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
 
     @Override
     public void onBackPressed() {
-        if(!thisUser.userName.equals("admin")) {
+        if (!thisUser.userName.equals("admin")) {
             updateUserSettings();
         }
         backButtonPressed = true;

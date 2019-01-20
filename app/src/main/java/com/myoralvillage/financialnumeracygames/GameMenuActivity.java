@@ -1,3 +1,8 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.app.Activity;
@@ -26,12 +31,12 @@ public class GameMenuActivity extends GenericActivityGame {
     //Grant/deny level access to users based off of game completion status
     public void setLevelAvailability() {
         for (int i = 0; i < thisUser.availableLevels.length; i++) {
-            String thisId = "btn_lvl" + String.valueOf(i+1);
+            String thisId = "btn_lvl" + String.valueOf(i + 1);
             int resId = getResources().getIdentifier(thisId, "id", getPackageName());
             ImageButton thisButton = (ImageButton) findViewById(resId);
             thisButton.setClickable(true);
             thisButton.setAlpha(1.0f);
-            if(!thisUser.admin && !thisUser.availableLevels[i]) {
+            if (!thisUser.admin && !thisUser.availableLevels[i]) {
                 thisButton.setClickable(false);
                 thisButton.setAlpha(0.5f);
             }

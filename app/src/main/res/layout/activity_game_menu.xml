@@ -1,13 +1,18 @@
-
+<!--
+ Copyright 2016, 2019 MyOralVillage
+ All Rights Reserved
+ -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gamechoicebackground"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="16dp"
-    android:paddingBottom="16dp" tools:context=".GameMenuActivity"
-    android:background="@drawable/gamechoicebackground">
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="16dp"
+    tools:context=".GameMenuActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,52 +21,48 @@
 
         <LinearLayout
             android:layout_width="20dip"
-            android:layout_height="150dip"
-            ></LinearLayout>
+            android:layout_height="150dip"></LinearLayout>
 
-    <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-       <ImageButton
-        android:id="@+id/btn_lvl1"
-        android:layout_height="220dip"
-        android:layout_width="180dip"
-           android:layout_marginLeft="20dip"
-        android:onClick="goToLevel1"
-        android:background="@drawable/sign1"
-        />
+            <ImageButton
+                android:id="@+id/btn_lvl1"
+                android:layout_width="180dip"
+                android:layout_height="220dip"
+                android:layout_marginLeft="20dip"
+                android:background="@drawable/sign1"
+                android:onClick="goToLevel1" />
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_weight="0.3"></LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"></LinearLayout>
 
-    <ImageButton
-        android:id="@+id/btn_lvl2"
-        android:layout_height="220dip"
-        android:layout_width="180dip"
-        android:onClick="goToLevel2"
-        android:background="@drawable/sign2"
-        />
+            <ImageButton
+                android:id="@+id/btn_lvl2"
+                android:layout_width="180dip"
+                android:layout_height="220dip"
+                android:background="@drawable/sign2"
+                android:onClick="goToLevel2" />
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_weight="0.3"></LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"></LinearLayout>
 
-    <ImageButton
-        android:id="@+id/btn_lvl3"
-        android:layout_height="220dip"
-        android:layout_width="180dip"
-        android:onClick="goToLevel3"
-        android:layout_marginRight="20dip"
-        android:background="@drawable/sign3"
-        />/>
+            <ImageButton
+                android:id="@+id/btn_lvl3"
+                android:layout_width="180dip"
+                android:layout_height="220dip"
+                android:layout_marginRight="20dip"
+                android:background="@drawable/sign3"
+                android:onClick="goToLevel3" />/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </LinearLayout>
 

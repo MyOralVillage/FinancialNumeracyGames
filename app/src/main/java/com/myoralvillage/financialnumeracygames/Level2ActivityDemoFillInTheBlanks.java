@@ -1,3 +1,8 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.content.Intent;
@@ -12,7 +17,7 @@ import android.widget.TextView;
 
 public class Level2ActivityDemoFillInTheBlanks extends AppCompatActivity {
 
-   public int demoNumber = 0;
+    public int demoNumber = 0;
 
 
     @Override
@@ -20,36 +25,36 @@ public class Level2ActivityDemoFillInTheBlanks extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level2_demofillintheblanks);
-        Typeface myTypeFace = Typeface.createFromAsset(getAssets(),"fonts/TanzaFont.ttf");
-        Button myButton = (Button)findViewById(R.id.optionView0);
+        Typeface myTypeFace = Typeface.createFromAsset(getAssets(), "fonts/TanzaFont.ttf");
+        Button myButton = (Button) findViewById(R.id.optionView0);
         myButton.setTypeface(myTypeFace);
-        myButton = (Button)findViewById(R.id.optionView1);
+        myButton = (Button) findViewById(R.id.optionView1);
         myButton.setTypeface(myTypeFace);
-        myButton = (Button)findViewById(R.id.optionView2);
+        myButton = (Button) findViewById(R.id.optionView2);
         myButton.setTypeface(myTypeFace);
-        TextView myTextView = (TextView)findViewById(R.id.sequenceView0);
+        TextView myTextView = (TextView) findViewById(R.id.sequenceView0);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.sequenceView1);
+        myTextView = (TextView) findViewById(R.id.sequenceView1);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.sequenceView2);
+        myTextView = (TextView) findViewById(R.id.sequenceView2);
         myTextView.setTypeface(myTypeFace);
-        myTextView = (TextView)findViewById(R.id.sequenceView3);
+        myTextView = (TextView) findViewById(R.id.sequenceView3);
         myTextView.setTypeface(myTypeFace);
         startDemo();
     }
 
     public void startDemo() {
-            TextView sequenceView0 = (TextView) findViewById(R.id.sequenceView0);
-            sequenceView0.setText("50");
+        TextView sequenceView0 = (TextView) findViewById(R.id.sequenceView0);
+        sequenceView0.setText("50");
 
-            TextView sequenceView1 = (TextView) findViewById(R.id.sequenceView1);
-            sequenceView1.setText("52");
+        TextView sequenceView1 = (TextView) findViewById(R.id.sequenceView1);
+        sequenceView1.setText("52");
 
-            TextView sequenceView2 = (TextView) findViewById(R.id.sequenceView2);
-            sequenceView2.setText("54");
+        TextView sequenceView2 = (TextView) findViewById(R.id.sequenceView2);
+        sequenceView2.setText("54");
 
-            TextView sequenceView3 = (TextView) findViewById(R.id.sequenceView3);
-            sequenceView3.setText("_");
+        TextView sequenceView3 = (TextView) findViewById(R.id.sequenceView3);
+        sequenceView3.setText("_");
 
 
         Button optionView0 = (Button) findViewById(R.id.optionView0);
@@ -66,17 +71,17 @@ public class Level2ActivityDemoFillInTheBlanks extends AppCompatActivity {
         finish();
     }
 
-    public void nextArrow(View v){
+    public void nextArrow(View v) {
         demoNumber++;
         demo(demoNumber, v);
     }
 
-    public void demo(int demoNumber, View v){
-        if (demoNumber==1){
+    public void demo(int demoNumber, View v) {
+        if (demoNumber == 1) {
             //show highlights
         }
 
-        if (demoNumber==2){
+        if (demoNumber == 2) {
             Button optionView0 = (Button) findViewById(R.id.optionView0);
             Button optionView1 = (Button) findViewById(R.id.optionView1);
             Button optionView2 = (Button) findViewById(R.id.optionView2);
@@ -84,7 +89,7 @@ public class Level2ActivityDemoFillInTheBlanks extends AppCompatActivity {
             optionView2.setAlpha(0.5f);
         }
 
-        if (demoNumber==3){
+        if (demoNumber == 3) {
             TextView sequenceView3 = (TextView) findViewById(R.id.sequenceView3);
             sequenceView3.setText("56");
             MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.applause);
@@ -121,11 +126,11 @@ public class Level2ActivityDemoFillInTheBlanks extends AppCompatActivity {
             optionView2.setAlpha(1f);
         }
 
-        if (demoNumber==5){
+        if (demoNumber == 5) {
             //show highlights
         }
 
-        if (demoNumber==6){
+        if (demoNumber == 6) {
             Button optionView0 = (Button) findViewById(R.id.optionView0);
             Button optionView1 = (Button) findViewById(R.id.optionView1);
             Button optionView2 = (Button) findViewById(R.id.optionView2);
@@ -133,7 +138,7 @@ public class Level2ActivityDemoFillInTheBlanks extends AppCompatActivity {
             optionView2.setAlpha(0.5f);
         }
 
-        if (demoNumber==7){
+        if (demoNumber == 7) {
             TextView sequenceView3 = (TextView) findViewById(R.id.sequenceView3);
             sequenceView3.setText("115");
             MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.applause);
@@ -143,12 +148,12 @@ public class Level2ActivityDemoFillInTheBlanks extends AppCompatActivity {
             //show final highlight
         }
 
-        if (demoNumber==8){
+        if (demoNumber == 8) {
             finish();
         }
     }
 
-    public void skipDemo(View v){
+    public void skipDemo(View v) {
         finish();
     }
 

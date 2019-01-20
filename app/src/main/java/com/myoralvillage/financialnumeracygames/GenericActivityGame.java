@@ -1,9 +1,10 @@
 /*
- * This code is Copyright MyOralVillage. All rights are reserved
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
  */
 
-package com.myoralvillage.financialnumeracygames;
 
+package com.myoralvillage.financialnumeracygames;
 
 import android.content.ClipData;
 import android.content.Intent;
@@ -12,8 +13,8 @@ import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Locale;
 
 import java.io.BufferedReader;
@@ -26,15 +27,27 @@ import java.io.IOException;
 
 /**
  * Created by paulj on 2016-10-17.
- *
+ * <p>
  * This class is designed to implement the code that is common to all games.
- *
+ * <p>
  * Reading and writing status, writing performance data (it is  not yet read) etc
- *
+ * <p>
  * Basically, just trying to reduce code duplication and make my life easier down the road
  */
 
 public abstract class GenericActivityGame extends AppCompatActivity {
+
+
+    /*
+     * This is really grossly inadequate. We're displaying an error message to
+     * an illiterate audience :-(.
+     *
+     * But at least it gives is a place to look if we can figure out what we SHOULD do
+     */
+
+    void displayError(int err) {
+        Toast.makeText(getApplicationContext(), err, Toast.LENGTH_SHORT).show();
+    }
 
     /*
      * List of games.
@@ -44,18 +57,11 @@ public abstract class GenericActivityGame extends AppCompatActivity {
      * enum constants instead of magic numbers.
      */
 
-    public enum ActivityGame {LEVEL1QA, LEVEL1UNKNOWN, LEVEL1DUALCODING,
-        LEVEL2FILLINTHEBLANKS, LEVEL2LEVEL2ORDERING, LEVEL2PV,
-        LEVEL3UNKNOWN, LEVEL3PURCHASE, LEVEL3EXACTCHANGE}
-
-    public class ActivityGames {
-        String scoreName;
-        ActivityGame which;
-    }
+    public enum ActivityGame {LEVEL3PURCHASE, LEVEL3EXACTCHANGE}
 
     public boolean userHasViewedDemo = false;
-    public int numCorrect=0;
-    public boolean correctOnFirstTry=true;
+    public int numCorrect = 0;
+    public boolean correctOnFirstTry = true;
 
     int scoringNumAttempts = 0;
 
@@ -75,10 +81,12 @@ public abstract class GenericActivityGame extends AppCompatActivity {
      */
 
     public final void writeToScore(String score_name) {
-        try
-        {
+        try {
             if (!root.exists()) {
-                root.mkdirs(); // TODO do something if this fails. What I'm not sure
+                if (!root.mkdirs()) {
+                    displayError(R.string.cannot_make_directory);
+                    // TODO probably not sufficient
+                }
             }
             File userSettingsFile = new File(root, score_name);
 
@@ -100,9 +108,7 @@ public abstract class GenericActivityGame extends AppCompatActivity {
             writer.flush();
             writer.close();
 
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -125,20 +131,23 @@ public abstract class GenericActivityGame extends AppCompatActivity {
         intent.putExtra("USERSETTINGS_DEMOSVIEWED", thisUser.demosViewed);
         intent.putExtra("USERSETTINGS_AVAILABLELEVELS", thisUser.availableLevels);
         intent.putExtra("USERSETTINGS_ACTIVITYPROGRESS", thisUser.activityProgress);
-        intent.putExtra ( "USERSETTINGS_ADMIN", thisUser.admin);
+        intent.putExtra("USERSETTINGS_ADMIN", thisUser.admin);
         return intent;
     }
 
     public final String stringifyUserSetting() {
         String thisString = thisUser.userName + "," + String.valueOf(thisUser.userId);
-        for(int i = 0; i < thisUser.demosViewed.length; i++) {
-            thisString += "," + String.valueOf(thisUser.demosViewed[i]);
+        for (int i = 0; i < thisUser.demosViewed.length; i++) {
+            thisString = thisString.concat(",");
+            thisString = thisString.concat(String.valueOf(thisUser.demosViewed[i]));
         }
-        for(int i = 0; i < thisUser.availableLevels.length; i++) {
-            thisString += "," + String.valueOf(thisUser.availableLevels[i]);
+        for (int i = 0; i < thisUser.availableLevels.length; i++) {
+            thisString = thisString.concat(",");
+            thisString = thisString.concat(String.valueOf(thisUser.availableLevels[i]));
         }
-        for(int i = 0; i < thisUser.activityProgress.length; i++) {
-            thisString += "," + String.valueOf(thisUser.activityProgress[i]);
+        for (int i = 0; i < thisUser.activityProgress.length; i++) {
+            thisString = thisString.concat(",");
+            thisString = thisString.concat(String.valueOf(thisUser.activityProgress[i]));
         }
 
         return thisString;
@@ -157,21 +166,21 @@ public abstract class GenericActivityGame extends AppCompatActivity {
             BufferedReader file = new BufferedReader(new FileReader(userSettingsFile));
             String line;
             String input = "";
-            String newLine ="";
-            String oldLine ="";
+            String newLine = "";
+            String oldLine = "";
 
             while ((line = file.readLine()) != null) {
                 String[] thisLine = line.split(",");
-                if(thisLine[0].equals(thisUser.userName)) {
+                if (thisLine[0].equals(thisUser.userName)) {
                     newLine = stringifyUserSetting();
                     oldLine = line;
                 }
-                input += line + '\n';
+                input = line.concat("\n");
             }
 
             file.close();
 
-            if(!oldLine.equals(newLine)) {
+            if (!oldLine.equals(newLine)) {
                 input = input.replace(oldLine, newLine);
             }
             // write the new String with the replaced line OVER the same file
@@ -201,20 +210,30 @@ public abstract class GenericActivityGame extends AppCompatActivity {
         @SuppressLint("NewApi")
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            /*
-             * Drag details: we only need default behavior
-             * - clip data could be set to pass data as part of drag
-             * - shadow can be tailored
-             */
+                /*
+                 * Drag details: we only need default behavior
+                 * - clip data could be set to pass data as part of drag
+                 * - shadow can be tailored
+                 */
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                 //start dragging the item touched
                 view.startDrag(data, shadowBuilder, view, 0);
-                return true;
+                return performClick();
             } else {
                 return false;
             }
         }
-    }
 
+        @SuppressWarnings("unused")
+        public boolean onClick(View v) {
+            System.out.println("Got onclick event");
+            return true;
+        }
+
+        private boolean performClick() {
+            System.out.println("Got onclick event");
+            return true;
+        }
+    }
 }

@@ -1,3 +1,9 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.content.Intent;
@@ -61,14 +67,14 @@ public class LoginActivity extends GenericActivityGame {
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
             case R.id.become_admin:
-               if(thisUser.admin) {
-                   Toast.makeText(this, "Going into non Admin mode", Toast.LENGTH_SHORT)
-                           .show();
-               } else {
-                   Toast.makeText(this, "Going into Admin mode", Toast.LENGTH_SHORT)
-                           .show();
-               }
-               thisUser.admin = !thisUser.admin;
+                if (thisUser.admin) {
+                    Toast.makeText(this, "Going into non Admin mode", Toast.LENGTH_SHORT)
+                            .show();
+                } else {
+                    Toast.makeText(this, "Going into Admin mode", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                thisUser.admin = !thisUser.admin;
 
                 break;
             // action with ID action_settings was selected
@@ -92,60 +98,60 @@ public class LoginActivity extends GenericActivityGame {
 
     public void DrawProfiles() {
 
-        if(12-userNames.size()>1) {
+        if (12 - userNames.size() > 1) {
             LinearLayout ll = (LinearLayout) findViewById(R.id.unclaimedProfiles1);
-            LinearLayout.LayoutParams llParams =  (LinearLayout.LayoutParams) ll.getLayoutParams();
+            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
             llParams.weight = 0.3f;
             ll.setLayoutParams(llParams);
         }
-        if(12-userNames.size()>7) {
+        if (12 - userNames.size() > 7) {
             LinearLayout ll = (LinearLayout) findViewById(R.id.unclaimedProfiles2);
-            LinearLayout.LayoutParams llParams =  (LinearLayout.LayoutParams) ll.getLayoutParams();
+            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
             llParams.weight = 0.3f;
             ll.setLayoutParams(llParams);
         }
-        if(userNames.size()>5) {
+        if (userNames.size() > 5) {
             LinearLayout ll = (LinearLayout) findViewById(R.id.claimedProfiles2);
-            LinearLayout.LayoutParams llParams =  (LinearLayout.LayoutParams) ll.getLayoutParams();
+            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
             llParams.weight = 0.3f;
             ll.setLayoutParams(llParams);
         }
         LinearLayout ll = (LinearLayout) findViewById(R.id.claimedProfiles1);
-        LinearLayout.LayoutParams llParams =  (LinearLayout.LayoutParams) ll.getLayoutParams();
+        LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
         llParams.weight = 0.3f;
         ll.setLayoutParams(llParams);
 
         int claimedCount = 0;
         int unclaimedCount = 0;
 
-        for(int i = 1; i < 12; i++) {
-            String filename = "user"+i;
-            if(userNames.size()>0) {
-                if(userNames.contains(filename)) {
-                        int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
-                        claimedCount++;
+        for (int i = 1; i < 12; i++) {
+            String filename = "user" + i;
+            if (userNames.size() > 0) {
+                if (userNames.contains(filename)) {
+                    int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
+                    claimedCount++;
 
-                        String imgview_name = "claimedProfile" + claimedCount;
+                    String imgview_name = "claimedProfile" + claimedCount;
 
-                        int res_id = getResources().getIdentifier(imgview_name, "id", getPackageName());
-                        ImageView iv = (ImageView) findViewById(res_id);
-                        iv.setImageResource(img_id);
-                        iv.setAlpha(0.5f);
-                        iv.setVisibility(View.VISIBLE);
-                        iv.setTag(filename);
+                    int res_id = getResources().getIdentifier(imgview_name, "id", getPackageName());
+                    ImageView iv = (ImageView) findViewById(res_id);
+                    iv.setImageResource(img_id);
+                    iv.setAlpha(0.5f);
+                    iv.setVisibility(View.VISIBLE);
+                    iv.setTag(filename);
 
-                    } else {
-                        int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
-                        unclaimedCount++;
+                } else {
+                    int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
+                    unclaimedCount++;
 
-                        String imgview_name = "unclaimedProfile" + unclaimedCount;
+                    String imgview_name = "unclaimedProfile" + unclaimedCount;
 
-                        int res_id = getResources().getIdentifier(imgview_name, "id", getPackageName());
-                        ImageView iv = (ImageView) findViewById(res_id);
-                        iv.setImageResource(img_id);
-                        iv.setVisibility(View.VISIBLE);
-                        iv.setTag(filename);
-                    }
+                    int res_id = getResources().getIdentifier(imgview_name, "id", getPackageName());
+                    ImageView iv = (ImageView) findViewById(res_id);
+                    iv.setImageResource(img_id);
+                    iv.setVisibility(View.VISIBLE);
+                    iv.setTag(filename);
+                }
 
             } else {
                 int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
@@ -160,11 +166,11 @@ public class LoginActivity extends GenericActivityGame {
                 iv.setTag(filename);
             }
         }
-        int adminId = userNames.size()+1;
+        int adminId = userNames.size() + 1;
         String filename = "admin";
         int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
 
-        String imgview_name = "claimedProfile"+adminId;
+        String imgview_name = "claimedProfile" + adminId;
         int res_id = getResources().getIdentifier(imgview_name, "id", getPackageName());
         ImageView iv = (ImageView) findViewById(res_id);
         iv.setImageResource(img_id);
@@ -182,22 +188,22 @@ public class LoginActivity extends GenericActivityGame {
             clickCount = 1;
             lastImageClicked = userString;
         }
-        if(userString.equals("admin")) {
-            if(clickCount >=0) {  // Was if hit it 10 times. Now should work if just come in once
+        if (userString.equals("admin")) {
+            if (clickCount >= 0) {  // Was if hit it 10 times. Now should work if just come in once
                 thisUser.userName = userString;
                 getDataThroughFile();
-                if(thisUser.userName.equals("admin")) {
+                if (thisUser.userName.equals("admin")) {
                     thisUser.userId = -1;
-                    for(int i = 0; i < thisUser.demosViewed.length; i++) {
+                    for (int i = 0; i < thisUser.demosViewed.length; i++) {
                         thisUser.demosViewed[i] = false;
                     }
-                    for(int i = 0; i < thisUser.availableLevels.length; i++) {
+                    for (int i = 0; i < thisUser.availableLevels.length; i++) {
                         thisUser.availableLevels[i] = true;
                     }
-                    for(int i = 0; i < thisUser.activityProgress.length; i++) {
+                    for (int i = 0; i < thisUser.activityProgress.length; i++) {
                         thisUser.activityProgress[i] = true;
                     }
-                } else if(newProfile) {
+                } else if (newProfile) {
                     thisUser.userId = userNames.size();
                     WriteFile();
                 }
@@ -207,25 +213,25 @@ public class LoginActivity extends GenericActivityGame {
                 intent.putExtra("USERSETTINGS_DEMOSVIEWED", thisUser.demosViewed);
                 intent.putExtra("USERSETTINGS_AVAILABLELEVELS", thisUser.availableLevels);
                 intent.putExtra("USERSETTINGS_ACTIVITYPROGRESS", thisUser.activityProgress);
-                intent.putExtra ( "USERSETTINGS_ADMIN", thisUser.admin);
+                intent.putExtra("USERSETTINGS_ADMIN", thisUser.admin);
                 startActivity(intent);
                 finish();
             }
         } else {
             thisUser.userName = userString;
             getDataThroughFile();
-            if(thisUser.userName.equals("admin")) {
+            if (thisUser.userName.equals("admin")) {
                 thisUser.userId = -1;
-                for(int i = 0; i < thisUser.demosViewed.length; i++) {
+                for (int i = 0; i < thisUser.demosViewed.length; i++) {
                     thisUser.demosViewed[i] = true;
                 }
-                for(int i = 0; i < thisUser.availableLevels.length; i++) {
+                for (int i = 0; i < thisUser.availableLevels.length; i++) {
                     thisUser.availableLevels[i] = true;
                 }
-                for(int i = 0; i < thisUser.activityProgress.length; i++) {
+                for (int i = 0; i < thisUser.activityProgress.length; i++) {
                     thisUser.activityProgress[i] = true;
                 }
-            } else if(newProfile) {
+            } else if (newProfile) {
                 thisUser.userId = userNames.size();
                 WriteFile();
             }
@@ -235,7 +241,7 @@ public class LoginActivity extends GenericActivityGame {
             intent.putExtra("USERSETTINGS_DEMOSVIEWED", thisUser.demosViewed);
             intent.putExtra("USERSETTINGS_AVAILABLELEVELS", thisUser.availableLevels);
             intent.putExtra("USERSETTINGS_ACTIVITYPROGRESS", thisUser.activityProgress);
-            intent.putExtra ( "USERSETTINGS_ADMIN", thisUser.admin);
+            intent.putExtra("USERSETTINGS_ADMIN", thisUser.admin);
             startActivity(intent);
             finish();
         }
@@ -253,8 +259,7 @@ public class LoginActivity extends GenericActivityGame {
                 userNames.add(thisLine[0]);
             }
             br.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -269,34 +274,32 @@ public class LoginActivity extends GenericActivityGame {
             while ((line = br.readLine()) != null) {
                 String[] thisLine = line.split(",");
                 userNames.add(thisLine[0]);
-                if(thisUser.userName.equals(thisLine[0])) {
+                if (thisUser.userName.equals(thisLine[0])) {
                     setUserData(thisLine);
                     newProfile = false;
                 }
             }
             br.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void setUserData(String[] data) {
         thisUser.userId = Integer.parseInt(data[1]);
-        for(int i = 0; i < thisUser.demosViewed.length; i++) {
-            thisUser.demosViewed[i] = Boolean.parseBoolean(data[i+2]);
+        for (int i = 0; i < thisUser.demosViewed.length; i++) {
+            thisUser.demosViewed[i] = Boolean.parseBoolean(data[i + 2]);
         }
-        for(int i = 0; i < thisUser.availableLevels.length; i++) {
-            thisUser.availableLevels[i] = Boolean.parseBoolean(data[i+11]);
+        for (int i = 0; i < thisUser.availableLevels.length; i++) {
+            thisUser.availableLevels[i] = Boolean.parseBoolean(data[i + 11]);
         }
-        for(int i = 0; i < thisUser.activityProgress.length; i++) {
-            thisUser.activityProgress[i] = Boolean.parseBoolean(data[i+14]);
+        for (int i = 0; i < thisUser.activityProgress.length; i++) {
+            thisUser.activityProgress[i] = Boolean.parseBoolean(data[i + 14]);
         }
     }
 
     public void WriteFile() {
-        try
-        {
+        try {
             if (!root.exists()) {
                 root.mkdirs();
             }
@@ -320,9 +323,7 @@ public class LoginActivity extends GenericActivityGame {
                 writer.close();
             }
 
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

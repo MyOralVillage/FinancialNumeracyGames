@@ -1,11 +1,17 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 /**
  * Created by paulj on 2016-10-28.
- *
+ * <p>
  * Virtually all the logic is in the superclass. This just initializes the
  * game specific test values
  */
@@ -20,13 +26,13 @@ public class Level3ActivityDemoExactChange extends Level3ActivityDemoCurrency {
     /*
      * This contains the game and currency specific information. It is
      * essentially the only code in the game specific subclasses
-	 */
+     */
 
     void onCreateGameSpecific() {
 
-		/*
-		 * And the Demo information
-		 *
+        /*
+         * And the Demo information
+         *
          * Note that no math is done in the demo so make sure the answer is right :-)
          * TODO : Change so that an exception is thrown if the math is wrong
          *
@@ -35,8 +41,14 @@ public class Level3ActivityDemoExactChange extends Level3ActivityDemoCurrency {
          *
          * When adding new currencies, make sure to add an item where the
          * change can be a combination of exactly 2 distinct cash units
-		 */
+         */
 
+        setup_demo(true);
+
+        //bill_paid = 3; // 5000
+        // bill_paid = R.drawable.shilling_2000;
+
+        /*
         switch(thisUser.actual_country) {
             case TONGA:
                 item_bought = R.drawable.basketoranges_pa_anga_3_50;
@@ -61,6 +73,7 @@ public class Level3ActivityDemoExactChange extends Level3ActivityDemoCurrency {
                 throw new AssertionError("Unrecognized Country");
 
         }
+        */
 
     }
 

@@ -1,82 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+ Copyright 2016, 2019 MyOralVillage
+ All Rights Reserved
+ -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical"
-              android:layout_weight="100">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="100"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom" >
+        android:layout_gravity="bottom">
+
         <ImageView
             android:id="@+id/score"
-            android:src="@drawable/star0"
             android:layout_width="250dip"
             android:layout_height="60dip"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dip"
-            android:layout_alignParentLeft="true"/>
+            android:src="@drawable/star0" />
 
         <ImageButton
             android:id="@+id/home_button"
             android:layout_width="50dip"
             android:layout_height="50dip"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="10dip"
             android:layout_marginRight="10dip"
-            android:layout_alignParentRight="true"
             android:background="@drawable/home"
-            android:onClick="setHomeButton"/>
+            android:onClick="setHomeButton" />
     </RelativeLayout>
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:tools="http://schemas.android.com/tools"
-                  android:layout_width="fill_parent"
-                  android:layout_height="fill_parent"
-                  android:paddingBottom="@dimen/activity_vertical_margin"
-                  android:paddingLeft="@dimen/activity_horizontal_margin"
-                  android:paddingRight="@dimen/activity_horizontal_margin"
-                  android:paddingTop="@dimen/activity_vertical_margin"
-                  android:orientation="horizontal"
-                  tools:context="com.myoralvillage.financialnumeracygames.Level1ActivityGameTracing"
-                  android:layout_weight="100">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="100"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="com.myoralvillage.financialnumeracygames.Level1ActivityGameTracing">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="200dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="40">
+            android:layout_width="200dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="40">
 
-        <ImageView android:id="@+id/image_view"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:adjustViewBounds="true"
-                   android:maxWidth="200dp"
-                   android:maxHeight="200dp"
-                   android:layout_centerInParent="true"
-                   android:src="@drawable/game1_qa_fingers0"
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:adjustViewBounds="true"
+                android:maxWidth="200dp"
+                android:maxHeight="200dp"
+                android:src="@drawable/game1_qa_fingers0"
 
-            />
+                />
         </RelativeLayout>
+
         <com.myoralvillage.financialnumeracygames.PaintView
             android:id="@+id/custView"
             android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:layout_weight="50"
-            />
+            android:layout_weight="50" />
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="50dp"
-                        android:layout_height="fill_parent"
-                        android:layout_weight="10">
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="10">
+
             <ImageButton
                 android:id="@+id/next_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lvl1_gametracing_nextBtn"
                 android:layout_centerInParent="true"
+                android:background="@drawable/demo_next_right_arrow_black"
                 android:onClick="newNumber"
-                android:background="@drawable/demo_next_right_arrow_black"/>
+                android:text="@string/lvl1_gametracing_nextBtn" />
         </RelativeLayout>
     </LinearLayout>
 

@@ -1,3 +1,9 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.content.Intent;
@@ -26,11 +32,11 @@ public class Level2Activity extends GenericActivityGame {
     }
 
     public void goToLevel2PlaceValue(View v) {
-        if(!thisUser.userName.equals("admin")) {
-            if(thisUser.activityProgress[0]&&thisUser.activityProgress[1]&&thisUser.activityProgress[2]) {
+        if (!thisUser.userName.equals("admin")) {
+            if (thisUser.activityProgress[0] && thisUser.activityProgress[1] && thisUser.activityProgress[2]) {
                 thisUser.availableLevels[1] = true;
             }
-            if(thisUser.activityProgress[3]&&thisUser.activityProgress[4]&&thisUser.activityProgress[5]) {
+            if (thisUser.activityProgress[3] && thisUser.activityProgress[4] && thisUser.activityProgress[5]) {
                 thisUser.availableLevels[2] = true;
             }
             updateUserSettings();
@@ -41,11 +47,11 @@ public class Level2Activity extends GenericActivityGame {
     }
 
     public void goToLevel2Ordering(View v) {
-        if(!thisUser.userName.equals("admin")) {
-            if(thisUser.activityProgress[0]&&thisUser.activityProgress[1]&&thisUser.activityProgress[2]) {
+        if (!thisUser.userName.equals("admin")) {
+            if (thisUser.activityProgress[0] && thisUser.activityProgress[1] && thisUser.activityProgress[2]) {
                 thisUser.availableLevels[1] = true;
             }
-            if(thisUser.activityProgress[3]&&thisUser.activityProgress[4]&&thisUser.activityProgress[5]) {
+            if (thisUser.activityProgress[3] && thisUser.activityProgress[4] && thisUser.activityProgress[5]) {
                 thisUser.availableLevels[2] = true;
             }
             updateUserSettings();
@@ -56,11 +62,11 @@ public class Level2Activity extends GenericActivityGame {
     }
 
     public void goToLevel2FillInTheBlanks(View v) {
-        if(!thisUser.userName.equals("admin")) {
-            if(thisUser.activityProgress[0]&&thisUser.activityProgress[1]&&thisUser.activityProgress[2]) {
+        if (!thisUser.userName.equals("admin")) {
+            if (thisUser.activityProgress[0] && thisUser.activityProgress[1] && thisUser.activityProgress[2]) {
                 thisUser.availableLevels[1] = true;
             }
-            if(thisUser.activityProgress[3]&&thisUser.activityProgress[4]&&thisUser.activityProgress[5]) {
+            if (thisUser.activityProgress[3] && thisUser.activityProgress[4] && thisUser.activityProgress[5]) {
                 thisUser.availableLevels[2] = true;
             }
             updateUserSettings();
@@ -71,11 +77,11 @@ public class Level2Activity extends GenericActivityGame {
     }
 
     public void setHomeButton(View v) {
-        if(!thisUser.userName.equals("admin")) {
-            if(thisUser.activityProgress[0]&&thisUser.activityProgress[1]&&thisUser.activityProgress[2]) {
+        if (!thisUser.userName.equals("admin")) {
+            if (thisUser.activityProgress[0] && thisUser.activityProgress[1] && thisUser.activityProgress[2]) {
                 thisUser.availableLevels[1] = true;
             }
-            if(thisUser.activityProgress[3]&&thisUser.activityProgress[4]&&thisUser.activityProgress[5]) {
+            if (thisUser.activityProgress[3] && thisUser.activityProgress[4] && thisUser.activityProgress[5]) {
                 thisUser.availableLevels[2] = true;
             }
             updateUserSettings();
@@ -87,11 +93,11 @@ public class Level2Activity extends GenericActivityGame {
     }
 
     public void onBackPressed() {
-        if(!thisUser.userName.equals("admin")) {
-            if(thisUser.activityProgress[0]&&thisUser.activityProgress[1]&&thisUser.activityProgress[2]) {
+        if (!thisUser.userName.equals("admin")) {
+            if (thisUser.activityProgress[0] && thisUser.activityProgress[1] && thisUser.activityProgress[2]) {
                 thisUser.availableLevels[1] = true;
             }
-            if(thisUser.activityProgress[3]&&thisUser.activityProgress[4]&&thisUser.activityProgress[5]) {
+            if (thisUser.activityProgress[3] && thisUser.activityProgress[4] && thisUser.activityProgress[5]) {
                 thisUser.availableLevels[2] = true;
             }
             updateUserSettings();

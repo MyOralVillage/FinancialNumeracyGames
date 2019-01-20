@@ -1,23 +1,28 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
-        import android.content.Intent;
-        import android.media.MediaPlayer;
-        import android.os.Environment;
-        import android.os.Handler;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.MotionEvent;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.ImageView;
-        import android.widget.TextView;
-        import android.os.Handler;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Environment;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.os.Handler;
 
-        import java.io.BufferedReader;
-        import java.io.File;
-        import java.io.FileOutputStream;
-        import java.io.FileReader;
-        import java.util.Random;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.util.Random;
 
 public class Level1ActivityGameTracing extends GenericActivityGame {
     private PaintView myView;

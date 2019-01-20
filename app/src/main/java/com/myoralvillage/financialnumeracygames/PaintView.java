@@ -1,3 +1,8 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.content.Context;
@@ -38,9 +43,8 @@ public class PaintView extends View {
     private int currentNumber;
     public boolean completedNumber = false;
 
-    public void setParameter(int currentNumber)
-    {
-        this.currentNumber=currentNumber;
+    public void setParameter(int currentNumber) {
+        this.currentNumber = currentNumber;
     }
 
     public PaintView(Context context) {
@@ -131,13 +135,11 @@ public class PaintView extends View {
 
         // TODO remove if you dont want points to be drawn
 
-        if (this.currentNumber != 8 && this.currentNumber != 0){
+        if (this.currentNumber != 8 && this.currentNumber != 0) {
             redDot = 1;
-        }
-        else if(this.currentNumber == 8){
+        } else if (this.currentNumber == 8) {
             redDot = 25;
-        }
-        else if(this.currentNumber == 0){
+        } else if (this.currentNumber == 0) {
             redDot = 21;
         }
 
@@ -209,7 +211,7 @@ public class PaintView extends View {
      * Adds certain number
      */
 
-    public void setNumber(int x){
+    public void setNumber(int x) {
         // TODO just test points
         completedNumber = false;
         if (x == 0) {
@@ -294,7 +296,6 @@ public class PaintView extends View {
              Point p4 = new Point(780, 960); **/
 
 
-
             Point p2 = new Point(91, 87);
             Point p3 = new Point(110, 71);
             Point p4 = new Point(138, 62);
@@ -349,8 +350,7 @@ public class PaintView extends View {
 
             invalidate();
             requestLayout();
-        }
-        else if (x == 1){
+        } else if (x == 1) {
             setParameter(1);
             mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             mLastPointIndex = 0;
@@ -367,8 +367,7 @@ public class PaintView extends View {
             mPoints.add(p5);
             invalidate();
             requestLayout();
-        }
-        else if (x == 2){
+        } else if (x == 2) {
             setParameter(2);
             mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             mLastPointIndex = 0;
@@ -405,8 +404,7 @@ public class PaintView extends View {
             mPoints.add(p15);
             invalidate();
             requestLayout();
-        }
-        else if (x == 8){
+        } else if (x == 8) {
             setParameter(8);
             mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             mLastPointIndex = 0;
@@ -467,8 +465,7 @@ public class PaintView extends View {
             mPoints.add(p27);
             invalidate();
             requestLayout();
-        }
-        else if (x == 7){
+        } else if (x == 7) {
             setParameter(7);
             mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             mLastPointIndex = 0;
@@ -505,8 +502,7 @@ public class PaintView extends View {
             mPoints.add(p13);
             invalidate();
             requestLayout();
-        }
-        else if (x == 9){
+        } else if (x == 9) {
             setParameter(9);
             mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             mLastPointIndex = 0;
@@ -532,8 +528,6 @@ public class PaintView extends View {
             Point p17 = new Point(185, 133);
 
 
-
-
             mPoints.add(p1);
             mPoints.add(p2);
             mPoints.add(p3);
@@ -555,8 +549,7 @@ public class PaintView extends View {
 
             invalidate();
             requestLayout();
-        }
-        else if (x == 6){
+        } else if (x == 6) {
             setParameter(6);
             mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             mLastPointIndex = 0;
@@ -615,8 +608,7 @@ public class PaintView extends View {
             //mPoints.add(p27);
             invalidate();
             requestLayout();
-        }
-        else if (x == 4){
+        } else if (x == 4) {
             setParameter(4);
             mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             mLastPointIndex = 0;
@@ -634,7 +626,6 @@ public class PaintView extends View {
             //Point p3 = new Point(110, 71);
 
 
-
             //Point p11 = new Point(566, 149);
 
 
@@ -642,7 +633,6 @@ public class PaintView extends View {
             //Point p14 = new Point(82, 183);
             //Point p15 = new Point(510, 167);
             //Point p16 = new Point(566, 167);
-
 
 
             //Point p19 = new Point(91, 229);
@@ -703,8 +693,7 @@ public class PaintView extends View {
 
             invalidate();
             requestLayout();
-        }
-        else  if (x == 5){
+        } else if (x == 5) {
             setParameter(5);
             mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
             mLastPointIndex = 0;
@@ -792,8 +781,8 @@ public class PaintView extends View {
             ++mLastPointIndex;
             isPathStarted = false;
         }
-        if(checkPoint(x,y,mLastPointIndex + 1) == false) {
-            if(mLastPointIndex + 1 == mPoints.size()) {
+        if (checkPoint(x, y, mLastPointIndex + 1) == false) {
+            if (mLastPointIndex + 1 == mPoints.size()) {
                 completedNumber = true;
             }
         }

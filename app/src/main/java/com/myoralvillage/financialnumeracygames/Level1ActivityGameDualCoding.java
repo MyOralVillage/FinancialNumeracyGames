@@ -1,3 +1,8 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.content.Intent;
@@ -35,7 +40,7 @@ public class Level1ActivityGameDualCoding extends GenericActivityGame {
         getExtras(intent);
         userHasViewedDemo = thisUser.demosViewed[2];
 
-        if(!userHasViewedDemo){
+        if (!userHasViewedDemo) {
             startDemo();
             thisUser.demosViewed[2] = true;
         }
@@ -69,9 +74,9 @@ public class Level1ActivityGameDualCoding extends GenericActivityGame {
 
     public void generateQuestion() {
         Random r = new Random();
-        correctAnswer=r.nextInt(10);
+        correctAnswer = r.nextInt(10);
 
-        String filename = "game1_dualcoding_"+correctAnswer;
+        String filename = "game1_dualcoding_" + correctAnswer;
         int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
 
         scoringQuestion = String.valueOf(correctAnswer);
@@ -95,21 +100,21 @@ public class Level1ActivityGameDualCoding extends GenericActivityGame {
         int wrongAnswer2 = -1;
         do {
             wrongAnswer1 = r.nextInt(10);
-        } while(wrongAnswer1==correctAnswer);
+        } while (wrongAnswer1 == correctAnswer);
         do {
             wrongAnswer2 = r.nextInt(10);
-        } while(wrongAnswer2==correctAnswer || wrongAnswer2==wrongAnswer1);
+        } while (wrongAnswer2 == correctAnswer || wrongAnswer2 == wrongAnswer1);
 
         String[] filenames = new String[3];
-        filenames[0] = "game1_qa_answer"+wrongAnswer1;
-        filenames[1] = "game1_qa_answer"+wrongAnswer2;
-        filenames[2] = "game1_qa_answer"+correctAnswer;
+        filenames[0] = "game1_qa_answer" + wrongAnswer1;
+        filenames[1] = "game1_qa_answer" + wrongAnswer2;
+        filenames[2] = "game1_qa_answer" + correctAnswer;
 
         scoringAnswers[0] = String.valueOf(wrongAnswer1);
         scoringAnswers[1] = String.valueOf(wrongAnswer2);
         scoringAnswers[2] = String.valueOf(correctAnswer);
 
-        int[] takenPositions = {-1,-1,-1};
+        int[] takenPositions = {-1, -1, -1};
         displayAnswers(filenames, takenPositions);
 
     }
@@ -119,17 +124,18 @@ public class Level1ActivityGameDualCoding extends GenericActivityGame {
 
             Random answerR = new Random();
             int answerPosition = -1;
-            if (i==0) {
+            if (i == 0) {
                 answerPosition = answerR.nextInt(3);
             } else {
                 do {
                     answerPosition = answerR.nextInt(3);
-                } while (answerPosition==takenPositions[0]||answerPosition==takenPositions[1]);
+                }
+                while (answerPosition == takenPositions[0] || answerPosition == takenPositions[1]);
             }
-            takenPositions[i]=answerPosition;
+            takenPositions[i] = answerPosition;
 
             int img_id = getResources().getIdentifier(filenames[i], "drawable", getPackageName());
-            String imgView_name = "img_answer"+answerPosition;
+            String imgView_name = "img_answer" + answerPosition;
             int res_id = getResources().getIdentifier(imgView_name, "id", getPackageName());
             ImageView iv = (ImageView) findViewById(res_id);
 
@@ -149,17 +155,17 @@ public class Level1ActivityGameDualCoding extends GenericActivityGame {
         int imgFileNum = Integer.parseInt((thisImage.toString()).substring(15));
         scoringSelectedAnswer = String.valueOf(imgFileNum);
 
-        if (imgFileNum==correctAnswer) {
+        if (imgFileNum == correctAnswer) {
             scoringCorrect = "correct";
             writeToScore("level1dualcoing.txt");
-            if(correctOnFirstTry==true) {
+            if (correctOnFirstTry == true) {
                 numCorrect++;
-                String score_name = "star"+numCorrect;
+                String score_name = "star" + numCorrect;
                 int score_id = getResources().getIdentifier(score_name, "drawable", getPackageName());
                 ImageView tv = (ImageView) findViewById(R.id.score);
                 tv.setImageResource(score_id);
             }
-            String filename = "game1_demo_dualcoding_"+correctAnswer;
+            String filename = "game1_demo_dualcoding_" + correctAnswer;
             int correct_image = getResources().getIdentifier(filename, "drawable", getPackageName());
 
             ImageView question = (ImageView) findViewById(R.id.img_question);
@@ -175,7 +181,7 @@ public class Level1ActivityGameDualCoding extends GenericActivityGame {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if(numCorrect==10) {
+                    if (numCorrect == 10) {
                         thisUser.activityProgress[2] = true;
                         onBackPressed();
                     } else {
@@ -186,7 +192,7 @@ public class Level1ActivityGameDualCoding extends GenericActivityGame {
         } else {
             scoringCorrect = "incorrect";
             writeToScore("level1dualcoing.txt");
-            v.setAlpha((float)0.5);
+            v.setAlpha((float) 0.5);
             v.setClickable(false);
             correctOnFirstTry = false;
         }
@@ -195,7 +201,7 @@ public class Level1ActivityGameDualCoding extends GenericActivityGame {
 
     @Override
     public void onBackPressed() {
-        if(!thisUser.userName.equals("admin")) {
+        if (!thisUser.userName.equals("admin")) {
             updateUserSettings();
         }
         backButtonPressed = true;

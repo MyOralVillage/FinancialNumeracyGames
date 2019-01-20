@@ -1,3 +1,8 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 
@@ -5,12 +10,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 
-
 /**
  * Created by paulj on 2016-10-22.
- *
+ * <p>
  * This is the superclass implementing most of the functionlity for the Purchase (a Placement Value) game
- *
  */
 
 public class Level3ActivityGamePurchase extends Level3ActivityCurrencyGame {
@@ -29,8 +32,8 @@ public class Level3ActivityGamePurchase extends Level3ActivityCurrencyGame {
     }
 
     /*
-	 * Set the paid information if it is relevant (exact change)
-	 */
+     * Set the paid information if it is relevant (exact change)
+     */
     void setPaid(int cash_unit) {
     }
 }

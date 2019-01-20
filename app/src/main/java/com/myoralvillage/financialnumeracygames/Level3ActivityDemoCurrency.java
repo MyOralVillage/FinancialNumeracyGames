@@ -1,9 +1,13 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,17 +19,16 @@ import android.widget.TextView;
 
 /**
  * Created by Paul on 10/19/2016
- *
+ * <p>
  * This is a generic class implementing all of the currency games demo code
- *
+ * <p>
  * Most of the game is currency neutral, the small part that isn't is set in a function at
  * the end
- *
  */
 
 public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
 
-   /*
+    /*
      * These are for the demo code only
      *
      * The item that was bought, the amount paid for it, etc all vary by currency and country
@@ -43,13 +46,52 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
     }
 
     /*
+     * This code is almost identical in the case of the demo for a purchase and for
+     * exact change
+     *
+     * In both cases, the answer MUST contain exactly two bills and we need to know the
+     * array index of the bills.
+     *
+     * To make the user specified code in strings.xml fairly human readable we parse two
+     * floating point values. Only need the second in the case of the change demo
+     *
+     */
+
+    void setup_demo(boolean change_demo) {
+        String currency_demo = getResources().getString(R.string.Currency_demo);
+        String[] parts = currency_demo.split(",");
+        item_bought = getResources().getIdentifier(parts[0], "drawable", getPackageName());
+        TextView item = findViewById(R.id.item);
+        float cost = Float.parseFloat(parts[1]);
+        item.setText(String.format(locale, format_string, cost));
+        int[] bills;
+        if (change_demo) {
+            float spent = Float.parseFloat(parts[2]); // Unused in purchase demo
+            bills = input_canonicalize(spent - cost);
+        } else {
+            bills = input_canonicalize(cost);
+        }
+        boolean found_second = false;
+        for (int i = bills.length - 1; i >= 0; i--) {
+            if (bills[i] != 0) {
+                if (!found_second) {
+                    found_second = true;
+                    second_bill = i;
+                } else {
+                    first_bill = i;
+                    break;
+                }
+            }
+        }
+    }
+
+    /*
      * Actual code to run the demo.
      *
      * Still code duplication, worry about that later.
      */
 
-    void runDemo()
-    {
+    void runDemo() {
 
         /*
          * So kinda vaguely working.
@@ -81,20 +123,10 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
 
         System.out.println(maxX + "and " + maxY);
 
-
-        /*
-        int x = finger1.getLeft();
-        int y = finger1.getTop();
-        */
-
-        /**final ImageView finger3 = (ImageView) findViewById(R.id.finger3);
-         final ImageView finger4 = (ImageView) findViewById(R.id.finger4); **/
-
-
-        final TextView cashView = (TextView) findViewById(R.id.cashView);
+        final TextView cashView = findViewById(R.id.cashView);
         cashView.setText(String.format(locale, format_string, 0f));
-        final ImageView item = (ImageView) findViewById(R.id.item);
-        item.setImageResource(item_bought);
+        final TextView item = findViewById(R.id.item);
+        item.setBackgroundResource(item_bought);
 
         // TODO Disable and enable cash listeners
         // first animation/drag action
@@ -224,5 +256,5 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
     }
 
     abstract void onCreateGameSpecific();   // This holds the ONLY changes between the
-                                                // demos for exact change and PV
+    // demos for exact change and PV
 }

@@ -1,3 +1,8 @@
+/*
+ * Copyright 2016, 2019 MyOralVillage
+ * All Rights Reserved
+ */
+
 package com.myoralvillage.financialnumeracygames;
 
 
@@ -23,8 +28,8 @@ public class Level3ActivityGameExactChange extends Level3ActivityCurrencyGame {
     }
 
     /*
-	 * Set the paid information if it is relevant (exact change)
-	 */
+     * Set the paid information if it is relevant (exact change)
+     */
     void setPaid(int cash_unit) {
         cash_units[cash_unit].paid.setImageResource(R.drawable.black_background);
         cash_units[cash_unit].paidView.setText(String.valueOf(tests[qNum].numPaid[cash_unit]));
