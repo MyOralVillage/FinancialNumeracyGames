@@ -245,7 +245,8 @@ public abstract class CurrencyActivityGame extends GenericActivityGame {
         public void clearInput()
         {
             getInputNumView().setText("0");
-            getInputView().setBackground(null);
+            num = 0;
+            getInputView().setImageResource(R.drawable.black_background);
         }
 
         @SuppressLint("ClickableViewAccessibility")
@@ -298,42 +299,42 @@ public abstract class CurrencyActivityGame extends GenericActivityGame {
                         Float.parseFloat(money_values[0]),
                         R.id.currency_1_bill,   // Bill at bottom - contains ACTUAL image
                         R.id.currency_1_input_cash_view, R.id.currency_1_input_num_view,
-                        R.id.currency_1_paid, R.id.currency_1_paidview
+                        R.id.currency_1_tendered_cash_view, R.id.currency_1_tendered_num_view
                 ),
                 new PerCash(
                         R.drawable.cur_2, // The resource of the ACTUAL image. NOT the layout
                         Float.parseFloat(money_values[1]),
                         R.id.currency_2_bill,   // Bill at bottom - contains ACTUAL image
                         R.id.currency_2_input_cash_view, R.id.currency_2_input_num_view,
-                        R.id.currency_2_paid, R.id.currency_2_paidview
+                        R.id.currency_2_tendered_cash_view, R.id.currency_2_tendered_num_view
                 ),
                 new PerCash(
                         R.drawable.cur_3, // The resource of the ACTUAL image. NOT the layout
                         Float.parseFloat(money_values[2]),
                         R.id.currency_3_bill,   // Bill at bottom - contains ACTUAL image
                         R.id.currency_3_input_cash_view, R.id.currency_3_input_num_view,
-                        R.id.currency_3_paid, R.id.currency_3_paidview
+                        R.id.currency_3_tendered_cash_view, R.id.currency_3_tendered_num_view
                 ),
                 new PerCash(
                         R.drawable.cur_4, // The resource of the ACTUAL image. NOT the layout
                         Float.parseFloat(money_values[3]),
                         R.id.currency_4_bill,   // Bill at bottom - contains ACTUAL image
                         R.id.currency_4_input_cash_view, R.id.currency_4_input_num_view,
-                        R.id.currency_4_paid, R.id.currency_4_paidview
+                        R.id.currency_4_tendered_cash_view, R.id.currency_4_tendered_num_view
                 ),
                 new PerCash(
                         R.drawable.cur_5, // The resource of the ACTUAL image. NOT the layout
                         Float.parseFloat(money_values[4]),
                         R.id.currency_5_bill,   // Bill at bottom - contains ACTUAL image
                         R.id.currency_5_input_cash_view, R.id.currency_5_input_num_view,
-                        R.id.currency_5_paid, R.id.currency_5_paidview
+                        R.id.currency_5_tendered_cash_view, R.id.currency_5_tendered_num_view
                 ),
                 new PerCash(
                         R.drawable.cur_6, // The resource of the ACTUAL image. NOT the layout
                         Float.parseFloat(money_values[5]),
                         R.id.currency_6_bill,   // Bill at bottom - contains ACTUAL image
                         R.id.currency_6_input_cash_view, R.id.currency_6_input_num_view,
-                        R.id.currency_6_paid, R.id.currency_6_paidview
+                        R.id.currency_6_tendered_cash_view, R.id.currency_6_tendered_num_view
                 )
         };
     }
