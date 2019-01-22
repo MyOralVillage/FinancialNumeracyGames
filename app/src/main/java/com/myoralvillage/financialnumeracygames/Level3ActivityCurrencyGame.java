@@ -8,13 +8,14 @@ package com.myoralvillage.financialnumeracygames;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 /**
@@ -38,7 +39,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
     //text views being dragged and dropped onto
 
     public TextView item;
-    public ImageView imageSandbox;
+    public ViewGroup imageSandbox;
     int qNum;
     double totalCash;
     public TextView cashView;
@@ -48,7 +49,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
      * Each individual test has the resource representing what is being bought, the answer the user
      * is expected to input, and the number of each currency unit that is being displayed
      *
-     * Rather than rely on the user to do the math, this inputs the actual value of the item
+     * Rather than rely on the user to do the math, this inputs the actual value of the purchased_item
      * and calculates the correct change. Seems safer
      *
      * Note that the same set of tests is used in both the purchase and exact change games
@@ -56,7 +57,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
      * While arguably not optimal thisn significantly reduces the code duplication and makes it
      * much easier to add currencies.
      *
-     * For the purchase game, we care about the cost of the item
+     * For the purchase game, we care about the cost of the purchased_item
      * For the exact change, we calculate the exact change
      */
 
@@ -67,21 +68,13 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
         int bought_item; // ID of the image
         float cost_item;
         float correct_amount;
-        int[] numPaid; // Array of numbers of each currency unit
-        float paid; // Calculate to make sure input is at least sane
+        float amount_paid; // On;y used in exact change game
 
-        Individual_Test(int ques, float cost, int[] num_cur) //amt0, int amt1, int amt2, int amt3, int amt4)
-        {
+        Individual_Test(int ques, float cost, float paid) {
             bought_item = ques;
-
-            paid = 0;
-            numPaid = num_cur;
+            amount_paid = paid;
             cost_item = cost;
-            // TODO Work on this boolean can_calculate = false;
-            // We have a limited set of currencies so not all values are legal
-            for (int i = 0; i < cash_units.length; i++) {
-                paid += numPaid[i] * cash_units[i].value;
-            }
+
             if (is_purchase) {
                 correct_amount = cost_item;
                 if (correct_amount <= 0) {
@@ -109,7 +102,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
 
         userHasViewedDemo = thisUser.demosViewed[8];
 
-        cashView = findViewById(R.id.cashView);
+        cashView = findViewById(R.id.paidView);
 
         //views to drop onto
         imageSandbox = findViewById(R.id.imageSandbox);
@@ -118,7 +111,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
         imageSandbox.setOnDragListener(new Level3ActivityCurrencyGame.ChoiceDragListener());
 
         //setup question
-        item = findViewById(R.id.item);
+        item = findViewById(R.id.purchased_item);
         onCreateCurrencySpecific();
 
         if (!userHasViewedDemo) {
@@ -133,7 +126,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
     /*
      * Set the paid information if it is relevant (exact change)
      */
-    abstract void setPaid(int cash_unit);
+    abstract void setPaid();
 
     public void setQuestion(int qNum) {
         correctOnFirstTry = true;
@@ -149,11 +142,9 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
         item.setBackgroundResource(tests[qNum].bought_item);
         item.setText(String.format(locale, format_string, tests[qNum].cost_item));
         totalCash = 0;
-        for (int i = 0; i < cash_units.length; i++) {
-            setPaid(i);
-            cash_units[i].num = 0;
-            cash_units[i].numView.setText(String.valueOf(cash_units[i].num));
-            cash_units[i].snap.setBackground(null);
+        setPaid();
+        for (PerCash cash_unit : cash_units) {
+            cash_unit.clearInput();
         }
 
         cashView.setText(String.format(locale, format_string, totalCash));
@@ -162,9 +153,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
 
     public void resetBoard() {
         for (PerCash cash_unit : cash_units) {
-            cash_unit.snap.setBackground(null);
-            cash_unit.num = 0;
-            cash_unit.numView.setText("0");
+            cash_unit.clearInput();
         }
         totalCash = 0;
         cashView.setText(String.format(locale, format_string, totalCash));
@@ -257,20 +246,21 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
                     //stop displaying the view where it was before it was dragged
                     view.setVisibility(View.VISIBLE);
 
-                    TextView cashView = findViewById(R.id.cashView);
+                    TextView cashView = findViewById(R.id.paidView);
 
                     ImageView dropped = (ImageView) view;
                     String droppedId = dropped.getResources().getResourceName(dropped.getId());
                     //String boxId = imageBox1.getResources().getResourceName(imageBox1.getId());
-                    System.out.println("On Drag + " + droppedId);
+                    System.out.println("Wow oh wow On Drag + " + droppedId);
 
                     for (PerCash cash_unit : cash_units) {
-                        if (droppedId.equals(cash_unit.resource_name)) {
-                            cash_unit.snap.setBackgroundResource(cash_unit.drawable_id);
-                            ++cash_unit.num;
-                            totalCash = totalCash + cash_unit.value;
+                        if(dropped.getId() == cash_unit.getBillId()) {
+                            System.out.println("Found bill!!!");
+                            cash_unit.getInputView().setImageResource(cash_unit.getDrawableId());
+                            cash_unit.increaseInputNum();
+                            totalCash = totalCash + cash_unit.getValue();
                             cashView.setText(String.format(locale, format_string, totalCash));
-                            cash_unit.numView.setText(String.valueOf(cash_unit.num));
+                            cash_unit.getInputNumView().setText(String.valueOf(cash_unit.getInputNum()));
                         }
                     }
                     break;
@@ -301,7 +291,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
             int resId = getResources().getIdentifier(parts[0], "drawable", getPackageName());
             tests[i] = new Individual_Test(resId,
                     Float.parseFloat(parts[1]),
-                    input_canonicalize(Float.parseFloat(parts[2])));
+                    Float.parseFloat(parts[2]));
         }
 
 

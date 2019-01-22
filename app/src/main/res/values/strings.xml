@@ -89,6 +89,7 @@
          They also MUST match the bills cur_1, cur_2 .., cur_9 or the user will be VERY confused :-)
          -->
     <string-array name="Value_Each_Currency">
+        <item>20</item>
         <item>50</item>
         <item>100</item>
         <item>200</item>
@@ -99,7 +100,7 @@
     <!--
         Cannot create an array of arrays so create a single dimensional array with elements separated by commas
         The first element is the name (basically just a comment at this point, it is used in any errors reported)
-        the second element is the price of the item as a floating point number. This is used in BOTH currency games
+        the second element is the price of the purchased_item as a floating point number. This is used in BOTH currency games
         The third element is the amount given in the Change currency game
 
         Note that BOTH the first and second element MUST be able to be EXACTLY expressed in the currency units.
@@ -119,7 +120,7 @@
     </string-array>
 
     <!--
-      This demo contains an item that can be bought with exactly two units of currency
+      This demo contains an purchased_item that can be bought with exactly two units of currency
       Set the price here but make very sure that the first amount represents exactly TWO
       different bills
 
@@ -130,5 +131,12 @@
     <string name="Currency_demo">
         basket_corn,250f,550f
     </string>
+
+    <string name="the_item_that_is_being_purchased">The item that is being purchased</string>
+    <string name="this_is_the_box_that_bills_get_dropped_in_as_user_purchsase_things">This is the box that bills get dropped in as user purchsase things</string>
+    <string name="element_visible_only_in_exact_change_game_containing_currency_paid_total_and_images">Element visible only in exact change game containing currency paid (total and images)</string>
+    <string name="the_total_amount_paid_in_the_exact_change_game">The total amount paid in the exact change game</string>
+    <string name="contains_the_image_of_the_bill">contains the image of the bill</string>
+    <string name="contains_the_text_giving_the_number_of_bills">contains the text giving the number of bills</string>
 
 </resources>

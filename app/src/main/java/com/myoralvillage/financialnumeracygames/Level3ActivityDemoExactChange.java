@@ -39,7 +39,7 @@ public class Level3ActivityDemoExactChange extends Level3ActivityDemoCurrency {
          * Also note that the demo code currently demands a single note in payment
          * and exactly 2 notes in change.
          *
-         * When adding new currencies, make sure to add an item where the
+         * When adding new currencies, make sure to add an purchased_item where the
          * change can be a combination of exactly 2 distinct cash units
          */
 

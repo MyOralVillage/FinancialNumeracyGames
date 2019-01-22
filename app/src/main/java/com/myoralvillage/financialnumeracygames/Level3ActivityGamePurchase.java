@@ -34,6 +34,6 @@ public class Level3ActivityGamePurchase extends Level3ActivityCurrencyGame {
     /*
      * Set the paid information if it is relevant (exact change)
      */
-    void setPaid(int cash_unit) {
+    void setPaid() {
     }
 }

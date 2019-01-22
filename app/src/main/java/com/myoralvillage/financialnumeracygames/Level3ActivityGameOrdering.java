@@ -173,7 +173,7 @@ public class Level3ActivityGameOrdering extends GenericActivityGame {
                 case DragEvent.ACTION_DROP:
                     //handle the dragged view being dropped over a drop view
                     View view = (View) event.getLocalState();
-                    //view dragged item is being dropped on
+                    //view dragged purchased_item is being dropped on
                     TextView dropTarget = (TextView) v;
                     //view being dragged and dropped
                     TextView dropped = (TextView) view;
@@ -182,13 +182,13 @@ public class Level3ActivityGameOrdering extends GenericActivityGame {
                     view.setVisibility(View.INVISIBLE);
                     //update the text in the target view to reflect the data being dropped
                     dropTarget.setText(dropped.getText().toString());
-                    //make it bold to highlight the fact that an item has been dropped
+                    //make it bold to highlight the fact that an purchased_item has been dropped
                     dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
                     dropTarget.setTextColor(0xffffffff);
                     dropTarget.setBackgroundResource(R.drawable.basket_1_mango_full);
-                    //if an item has already been dropped here, there will be a tag
+                    //if an purchased_item has already been dropped here, there will be a tag
                     Object tag = dropTarget.getTag();
-                    //if there is already an item here, set it back visible in its original place
+                    //if there is already an purchased_item here, set it back visible in its original place
                     if (tag != null) {
                         //the tag is the view id already dropped here
                         int existingID = (Integer) tag;

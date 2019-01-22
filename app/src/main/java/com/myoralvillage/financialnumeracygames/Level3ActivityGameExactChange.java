@@ -30,11 +30,16 @@ public class Level3ActivityGameExactChange extends Level3ActivityCurrencyGame {
     /*
      * Set the paid information if it is relevant (exact change)
      */
-    void setPaid(int cash_unit) {
-        cash_units[cash_unit].paid.setImageResource(R.drawable.black_background);
-        cash_units[cash_unit].paidView.setText(String.valueOf(tests[qNum].numPaid[cash_unit]));
-        if (tests[qNum].numPaid[cash_unit] > 0) {
-            cash_units[cash_unit].paid.setImageResource(cash_units[cash_unit].drawable_id);
+
+    void setPaid() {
+        int[] numPaid =  input_canonicalize(tests[qNum].amount_paid);
+        for (int i = 0; i < cash_units.length; i++) {
+            cash_units[i].getTenderedNum().setText(String.valueOf(numPaid[i]));
+            if (numPaid[i] > 0) {
+                cash_units[i].getTenderedImage().setImageResource(cash_units[i].getDrawableId());
+            } else {
+                cash_units[i].getTenderedImage().setImageResource(R.drawable.black_background);
+            }
         }
     }
 }

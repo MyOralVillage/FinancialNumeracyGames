@@ -31,10 +31,10 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
     /*
      * These are for the demo code only
      *
-     * The item that was bought, the amount paid for it, etc all vary by currency and country
+     * The purchased_item that was bought, the amount paid for it, etc all vary by currency and country
      */
 
-    int item_bought; // The id for the image of the item bought
+    int item_bought; // The id for the image of the purchased_item bought
     int first_bill; // The index for the image of the first bill received as change
     int second_bill; // The index for the image of the second bill received as change
 
@@ -61,7 +61,7 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
         String currency_demo = getResources().getString(R.string.Currency_demo);
         String[] parts = currency_demo.split(",");
         item_bought = getResources().getIdentifier(parts[0], "drawable", getPackageName());
-        TextView item = findViewById(R.id.item);
+        TextView item = findViewById(R.id.purchased_item);
         float cost = Float.parseFloat(parts[1]);
         item.setText(String.format(locale, format_string, cost));
         int[] bills;
@@ -123,9 +123,9 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
 
         System.out.println(maxX + "and " + maxY);
 
-        final TextView cashView = findViewById(R.id.cashView);
+        final TextView cashView = findViewById(R.id.paidView);
         cashView.setText(String.format(locale, format_string, 0f));
-        final TextView item = findViewById(R.id.item);
+        final TextView item = findViewById(R.id.purchased_item);
         item.setBackgroundResource(item_bought);
 
         // TODO Disable and enable cash listeners
@@ -154,7 +154,7 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
         firstAnimationSet.addAnimation(animation1);
 
         //  finger1.startAnimation(firstAnimationSet);
-        cash_units[first_bill].bill.startAnimation(firstAnimationSet);
+        cash_units[first_bill].getInputView().startAnimation(firstAnimationSet);
         firstAnimationSet.setAnimationListener(new Animation.AnimationListener() {
 
             @Override
@@ -178,8 +178,8 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
                 //finger1.setVisibility(View.INVISIBLE);
 
                 // How does snap work?
-                cash_units[first_bill].snap.setBackgroundResource(cash_units[first_bill].drawable_id);
-                cashView.setText(String.format(locale, format_string, cash_units[first_bill].value));
+                cash_units[first_bill].getInputView().setBackgroundResource(cash_units[first_bill].getDrawableId());
+                cashView.setText(String.format(locale, format_string, cash_units[first_bill].getValue()));
 
             }
         });
@@ -222,7 +222,7 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
 
                 secondAnimationSet.addAnimation(animation22);
                 imagefinger.startAnimation(secondAnimationSet);
-                cash_units[second_bill].bill.startAnimation(secondAnimationSet);
+                cash_units[second_bill].getBillImage().startAnimation(secondAnimationSet);
                 secondAnimationSet.setAnimationListener(new Animation.AnimationListener() {
 
                     @Override
@@ -241,9 +241,9 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
                     public void onAnimationEnd(Animation animation) {
                         // TODO Auto-generated method stub
                         //img_animation1.layout(1500,400,1500,1000);
-                        cash_units[second_bill].snap.setBackgroundResource(cash_units[second_bill].drawable_id);
+                        cash_units[second_bill].getInputView().setBackgroundResource(cash_units[second_bill].getDrawableId());
                         imagefinger.setVisibility(View.INVISIBLE);
-                        cashView.setText(String.format(locale, format_string, cash_units[first_bill].value + cash_units[second_bill].value));
+                        cashView.setText(String.format(locale, format_string, cash_units[first_bill].getValue() + cash_units[second_bill].getValue()));
                     }
                 });
             }

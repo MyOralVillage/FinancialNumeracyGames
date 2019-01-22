@@ -43,6 +43,12 @@ public abstract class GenericActivityGame extends AppCompatActivity {
      * an illiterate audience :-(.
      *
      * But at least it gives is a place to look if we can figure out what we SHOULD do
+     *
+     * At the very least, an error is going to be locale specific
+     *
+     * But I think as well as text I'm going to want to add a picture for each error message.
+     *
+     * TODO: Add some kind of pop up picture since our target audience IS illiterate
      */
 
     void displayError(int err) {
@@ -217,7 +223,7 @@ public abstract class GenericActivityGame extends AppCompatActivity {
                  */
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-                //start dragging the item touched
+                //start dragging the purchased_item touched
                 view.startDrag(data, shadowBuilder, view, 0);
                 return performClick();
             } else {
@@ -232,7 +238,7 @@ public abstract class GenericActivityGame extends AppCompatActivity {
         }
 
         private boolean performClick() {
-            System.out.println("Got onclick event");
+            System.out.println("Got performClick event");
             return true;
         }
     }

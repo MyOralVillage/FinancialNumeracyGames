@@ -34,7 +34,7 @@ public class Level3ActivityDemoPurchase extends Level3ActivityDemoCurrency {
          * Note that no math is done in the demo so make sure the answer is right :-)
          * TODO : Change so that an exception is thrown if the math is wrong
          *
-         * Also note that the demo code currently demands that the item
+         * Also note that the demo code currently demands that the purchased_item
          * can be bought with exactly two bills.
          */
         setup_demo(false);

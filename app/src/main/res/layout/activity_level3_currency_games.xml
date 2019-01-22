@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
  Copyright 2016, 2019 MyOralVillage
  All Rights Reserved
  -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background5">
+    android:background="@drawable/background5"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/score"
             android:layout_width="250dp"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
             android:layout_marginStart="2dp"
             android:layout_marginLeft="2dp"
             android:contentDescription="@null"
@@ -27,39 +27,32 @@
         <ImageButton
             android:id="@+id/home_button"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginLeft="200dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/home"
             android:contentDescription="@null"
             android:onClick="setHomeButton" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/paidArea"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/cashView"
-            android:layout_width="250dp"
-            android:layout_height="75dp"
-            android:layout_gravity="center"
-            android:contentDescription="@null"
-            android:text="0"
-            android:textAlignment="center"
-            android:textSize="40dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/element_visible_only_in_exact_change_game_containing_currency_paid_total_and_images"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/paidBox"
             android:layout_width="510dp"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:layout_marginStart="205dp"
-            android:layout_marginLeft="205dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="10dp"
@@ -141,261 +134,316 @@
                 android:contentDescription="@null"
                 android:textColor="@android:color/white" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="0.5"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
-
+            <ImageView
+                android:id="@+id/currency_6_paid"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@null" />
 
             <TextView
-                android:id="@+id/item"
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:layout_gravity="right"
-                android:gravity="right|top"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textAlignment="gravity"
-                android:textSize="30dp"
+                android:id="@+id/currency_6_paidview"
+                android:layout_width="20dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
                 android:contentDescription="@null"
-                />
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/paidView"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:contentDescription="@string/the_total_amount_paid_in_the_exact_change_game"
+            android:textAlignment="center"
+            android:textSize="40sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginBottom="10dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/purchased_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/the_item_that_is_being_purchased"
+            android:gravity="end|top"
+            android:textAlignment="gravity"
+            android:textSize="30sp" />
 
 
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="500dp"
-                android:layout_height="150dp"
-                android:background="@android:color/darker_gray">
+        <!--
+          This contains the input bills and the number of each input bill
 
+          Only bills with a number greater than 1 are displayed
 
-                <ImageView
-                    android:id="@+id/imageSandbox"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="@android:color/darker_gray"
-                    android:contentDescription="@null"
-                    android:gravity="top" />
+          I have tried to use a compound drawable with the image and
+          number in one TextView. I failed. There just doesn't seem
+          to be enough control. So, I went with separate image and number
+          fields
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+          TODO - At some point should reinvestigate to see if we can end up with a single view
+          -->
 
-                    <ImageView
-                        android:id="@+id/currency_1_billSnap"
-                        android:layout_width="150dp"
-                        android:layout_height="65dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_weight="0.22"
-                        android:background="@android:color/darker_gray"
-                        android:contentDescription="@null"
-                        android:gravity="top" />
-
-                    <LinearLayout
-                        android:layout_width="20dp"
-                        android:layout_height="65dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/currency_1_num"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:contentDescription="@null" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/currency_2_billSnap"
-                        android:layout_width="150dp"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_weight="0.22"
-                        android:background="@android:color/darker_gray"
-                        android:contentDescription="@null"
-                        android:gravity="top" />
-
-                    <LinearLayout
-                        android:layout_width="20dp"
-                        android:layout_height="65dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/currency_2_num"
-                            android:layout_width="20dp"
-                            android:layout_height="50dp"
-                            android:contentDescription="@null" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/currency_3_billSnap"
-                        android:layout_width="150dp"
-                        android:layout_height="65dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_weight="0.232"
-                        android:background="@android:color/darker_gray"
-                        android:contentDescription="@null"
-                        android:gravity="top" />
-
-                    <LinearLayout
-                        android:layout_width="20dp"
-                        android:layout_height="65dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/currency_3_num"
-                            android:layout_width="20dp"
-                            android:layout_height="50dp"
-                            android:contentDescription="@null" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/currency_4_billSnap"
-                    android:layout_width="150dp"
-                    android:layout_height="65dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="4dp"
-                    android:background="@android:color/darker_gray"
-                    android:contentDescription="@null"
-                    android:gravity="top" />
-
-                <TextView
-                    android:id="@+id/currency_4_num"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toEndOf="@id/currency_4_billSnap"
-                    android:layout_toRightOf="@id/currency_4_billSnap"
-                    android:contentDescription="@null"
-                    android:gravity="top" />
-
-                <ImageView
-                    android:id="@+id/imageBox45"
-                    android:layout_width="150dp"
-                    android:layout_height="65dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toEndOf="@id/currency_4_num"
-                    android:layout_toRightOf="@id/currency_4_num"
-                    android:background="@android:color/darker_gray"
-                    android:contentDescription="@null"
-                    android:gravity="top" />
-
-                <ImageView
-                    android:id="@+id/currency_5_billSnap"
-                    android:layout_width="150dp"
-                    android:layout_height="65dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="4dp"
-                    android:layout_toEndOf="@id/imageBox45"
-                    android:layout_toRightOf="@id/imageBox45"
-                    android:background="@android:color/darker_gray"
-                    android:contentDescription="@null"
-                    android:gravity="top" />
-
-                <TextView
-                    android:id="@+id/currency_5_num"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toEndOf="@id/currency_5_billSnap"
-                    android:layout_toRightOf="@id/currency_5_billSnap"
-                    android:contentDescription="@null"
-                    android:gravity="top" />
-
-                <ImageView
-                    android:id="@+id/imageBox55"
-                    android:layout_width="300dp"
-                    android:layout_height="65dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toEndOf="@id/currency_5_num"
-                    android:layout_toRightOf="@id/currency_5_num"
-                    android:background="@android:color/darker_gray"
-                    android:contentDescription="@null"
-                    android:gravity="top" />
-
-
-            </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/imageSandbox"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="@string/this_is_the_box_that_bills_get_dropped_in_as_user_purchsase_things"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="50dp"
-                android:layout_height="300dp"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/nextArrow"
-                    android:layout_width="40dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.04"
-                    android:background="@drawable/demo_next_right_arrow_black"
-                    android:contentDescription="@null"
-                    android:onClick="advanceGame" />
+                    android:id="@+id/currency_1_input_cash_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_image_of_the_bill" />
+
+                <TextView
+                    android:id="@+id/currency_1_input_num_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="0.25"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_text_giving_the_number_of_bills"
+                    android:gravity="end|top"
+                    android:textAlignment="gravity"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/currency_2_input_cash_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_image_of_the_bill" />
+
+                <TextView
+                    android:id="@+id/currency_2_input_num_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="0.25"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_text_giving_the_number_of_bills"
+                    android:gravity="end|top"
+                    android:textAlignment="gravity"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/currency_3_input_cash_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_image_of_the_bill" />
+
+                <TextView
+                    android:id="@+id/currency_3_input_num_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="0.25"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_text_giving_the_number_of_bills"
+                    android:gravity="end|top"
+                    android:textAlignment="gravity"
+                    android:textSize="20sp" />
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/currency_4_input_cash_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_image_of_the_bill" />
+
+                <TextView
+                    android:id="@+id/currency_4_input_num_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="0.25"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_text_giving_the_number_of_bills"
+                    android:gravity="end|top"
+                    android:textAlignment="gravity"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/currency_5_input_cash_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_image_of_the_bill" />
+
+                <TextView
+                    android:id="@+id/currency_5_input_num_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="0.25"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_text_giving_the_number_of_bills"
+                    android:gravity="end|top"
+                    android:textAlignment="gravity"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/currency_6_input_cash_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_image_of_the_bill" />
+
+                <TextView
+                    android:id="@+id/currency_6_input_num_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="0.25"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/contains_the_text_giving_the_number_of_bills"
+                    android:gravity="end|top"
+                    android:textAlignment="gravity"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/nextArrow"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="100dp"
+            android:background="@drawable/demo_next_right_arrow_black"
+            android:contentDescription="@null"
+            android:onClick="advanceGame" />
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
         android:gravity="bottom">
 
         <ImageView
             android:id="@+id/currency_1_bill"
-            android:layout_width="40dp"
-            android:layout_height="65dp"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
             android:layout_marginBottom="10dp"
-            android:layout_weight="0.04"
+            android:layout_weight="1"
             android:contentDescription="@null" />
 
         <ImageView
             android:id="@+id/currency_2_bill"
-            android:layout_width="40dp"
-            android:layout_height="65dp"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
             android:layout_marginBottom="10dp"
-            android:layout_weight="0.04"
+            android:layout_weight="1"
             android:contentDescription="@null" />
 
         <ImageView
             android:id="@+id/currency_3_bill"
-            android:layout_width="40dp"
-            android:layout_height="65dp"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
             android:layout_marginBottom="10dp"
-            android:layout_weight="0.04"
+            android:layout_weight="1"
             android:contentDescription="@null" />
 
         <ImageView
             android:id="@+id/currency_4_bill"
-            android:layout_width="40dp"
-            android:layout_height="65dp"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
             android:layout_marginBottom="10dp"
-            android:layout_weight="0.04"
+            android:layout_weight="1"
             android:contentDescription="@null" />
 
         <ImageView
             android:id="@+id/currency_5_bill"
-            android:layout_width="40dp"
-            android:layout_height="65dp"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
             android:layout_marginBottom="10dp"
-            android:layout_weight="0.04"
+            android:layout_weight="1"
+            android:contentDescription="@null" />
+
+        <ImageView
+            android:id="@+id/currency_6_bill"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
             android:contentDescription="@null" />
 
     </LinearLayout>
 
+    <!--
     <ImageView
         android:id="@+id/finger1"
         android:layout_width="60dp"
@@ -409,5 +457,6 @@
         android:minHeight="60dp"
         android:src="@drawable/finger"
         android:visibility="gone" />
+        -->
 
-</RelativeLayout>
+</LinearLayout>
