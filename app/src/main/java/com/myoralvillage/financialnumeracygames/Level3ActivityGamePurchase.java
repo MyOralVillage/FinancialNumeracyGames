@@ -22,6 +22,7 @@ public class Level3ActivityGamePurchase extends Level3ActivityCurrencyGame {
     protected void onCreate(Bundle savedInstanceState) {
         is_purchase = true;
         name_score_file = "level3purchase.txt";
+        gameNum = 7;    // TODO - Replace with Enum
         super.onCreate(savedInstanceState);
     }
 

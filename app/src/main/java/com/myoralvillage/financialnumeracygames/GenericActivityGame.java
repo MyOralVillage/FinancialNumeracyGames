@@ -77,10 +77,14 @@ public abstract class GenericActivityGame extends AppCompatActivity {
     final String[] scoringAnswers = new String[3];
     final Locale locale = Locale.US;
 
+    /*
+     * These are used to determine the time taken to run a test
+     */
+    public long startTime, endTime;
+    public int gameNum; // TODO - Change to an enum
+
     public final UserSettings thisUser = new UserSettings();
     final File root = new File(Environment.getExternalStorageDirectory(), "Notes");
-    boolean backButtonPressed = false;
-    boolean homeButtonPressed = false;
 
     /*
      * TODO - This code needs to be radically changed
@@ -120,11 +124,6 @@ public abstract class GenericActivityGame extends AppCompatActivity {
     }
 
     public void setHomeButton(View v) {
-        if (!thisUser.userName.equals("admin")) {
-            updateUserSettings();
-        }
-        homeButtonPressed = true;
-
         final Intent intent = createIntent(GameMenuActivity.class);
         startActivity(intent);
         finish();

@@ -55,8 +55,6 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
 
     public UserSettings thisUser = new UserSettings();
     File root = new File(Environment.getExternalStorageDirectory(), "Notes");
-    boolean backButtonPressed = false;
-    boolean homeButtonPressed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +114,6 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
             if (numCorrect >= 10) {
                 difficultyLevel++;
                 numCorrect = 0;
-                thisUser.activityProgress[3] = true;
                 //sequence[0] = randomFirstNumber.nextInt(89) + 10;
             }
 
@@ -288,22 +285,12 @@ public class Level2ActivityGameFillInTheBlanks extends GenericActivityGame {
 
     @Override
     public void onBackPressed() {
-        if (!thisUser.userName.equals("admin")) {
-            updateUserSettings();
-        }
-        backButtonPressed = true;
-
         Intent intent = createIntent(Level2Activity.class);
         startActivity(intent);
         finish();
     }
 
     public void setHomeButton(View v) {
-        if (!thisUser.userName.equals("admin")) {
-            updateUserSettings();
-        }
-        homeButtonPressed = true;
-
         final Intent intent = createIntent(GameMenuActivity.class);
         startActivity(intent);
         finish();

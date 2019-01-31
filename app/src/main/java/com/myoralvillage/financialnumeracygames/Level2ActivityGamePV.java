@@ -398,7 +398,6 @@ public class Level2ActivityGamePV extends GenericActivityGame {
                 @Override
                 public void run() {
                     if (numCorrect >= 10 && difficultyLevel < 2) {
-                        thisUser.activityProgress[5] = true;
                         difficultyLevel++;
                         numCorrect = 0;
                         String score_name = "star" + numCorrect;

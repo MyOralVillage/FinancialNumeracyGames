@@ -33,9 +33,6 @@ public class Level1ActivityGameTracing extends GenericActivityGame {
     public UserSettings thisUser = new UserSettings();
     File root = new File(Environment.getExternalStorageDirectory(), "Notes");
 
-    boolean backButtonPressed = false;
-    boolean homeButtonPressed = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +67,6 @@ public class Level1ActivityGameTracing extends GenericActivityGame {
             //final Random rand = new Random();
             //int randNum = rand.nextInt(10);
             if (numCorrect == 10) {
-                thisUser.activityProgress[1] = true;
                 onBackPressed();
             }
             String score_name = "star" + numCorrect;
@@ -96,12 +92,6 @@ public class Level1ActivityGameTracing extends GenericActivityGame {
 
     @Override
     public void onBackPressed() {
-
-        if (!thisUser.userName.equals("admin")) {
-            updateUserSettings();
-        }
-        backButtonPressed = true;
-
         Intent intent = createIntent(Level1Activity.class);
         startActivity(intent);
         finish();
@@ -109,11 +99,6 @@ public class Level1ActivityGameTracing extends GenericActivityGame {
     }
 
     public void setHomeButton(View v) {
-        if (!thisUser.userName.equals("admin")) {
-            updateUserSettings();
-        }
-        homeButtonPressed = true;
-
         final Intent intent = createIntent(GameMenuActivity.class);
         startActivity(intent);
         finish();

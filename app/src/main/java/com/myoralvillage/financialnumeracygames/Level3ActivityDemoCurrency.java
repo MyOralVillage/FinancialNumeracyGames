@@ -123,7 +123,7 @@ public abstract class Level3ActivityDemoCurrency extends CurrencyActivityGame {
 
         System.out.println(maxX + "and " + maxY);
 
-        final TextView cashView = findViewById(R.id.paidView);
+        final TextView cashView = findViewById(R.id.tenderedAmountView);
         cashView.setText(String.format(locale, format_string, 0f));
         final TextView item = findViewById(R.id.purchased_item);
         item.setBackgroundResource(item_bought);

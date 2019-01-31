@@ -182,7 +182,6 @@ public class Level1ActivityGameDualCoding extends GenericActivityGame {
                 @Override
                 public void run() {
                     if (numCorrect == 10) {
-                        thisUser.activityProgress[2] = true;
                         onBackPressed();
                     } else {
                         startNewRound();
@@ -201,11 +200,6 @@ public class Level1ActivityGameDualCoding extends GenericActivityGame {
 
     @Override
     public void onBackPressed() {
-        if (!thisUser.userName.equals("admin")) {
-            updateUserSettings();
-        }
-        backButtonPressed = true;
-
         Intent intent = createIntent(Level1Activity.class);
         startActivity(intent);
         finish();

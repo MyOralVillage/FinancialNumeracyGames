@@ -36,9 +36,6 @@ public class Level1ActivityGameQA extends GenericActivityGame {
     public int numCorrect = 0;
     public UserSettings thisUser = new UserSettings();
     File root = new File(Environment.getExternalStorageDirectory(), "Notes");
-    boolean backButtonPressed = false;
-    boolean homeButtonPressed = false;
-
     int scoringNumAttempts = 0;
     String scoringCorrect;
     String scoringSelectedAnswer;
@@ -187,7 +184,6 @@ public class Level1ActivityGameQA extends GenericActivityGame {
                 @Override
                 public void run() {
                     if (numCorrect == 10) {
-                        thisUser.activityProgress[0] = true;
                         onBackPressed();
                     } else {
                         startNewRound();
@@ -206,12 +202,6 @@ public class Level1ActivityGameQA extends GenericActivityGame {
 
     @Override
     public void onBackPressed() {
-
-        if (!thisUser.userName.equals("admin")) {
-            updateUserSettings();
-        }
-        backButtonPressed = true;
-
         Intent intent = createIntent(Level1Activity.class);
         startActivity(intent);
         finish();
@@ -219,12 +209,7 @@ public class Level1ActivityGameQA extends GenericActivityGame {
     }
 
     public void setHomeButton(View v) {
-        if (!thisUser.userName.equals("admin")) {
-            updateUserSettings();
-        }
-        homeButtonPressed = true;
-
-        final Intent intent = createIntent(GameMenuActivity.class);
+       final Intent intent = createIntent(GameMenuActivity.class);
         startActivity(intent);
         finish();
     }

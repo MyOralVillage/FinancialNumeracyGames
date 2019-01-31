@@ -8,7 +8,6 @@ package com.myoralvillage.financialnumeracygames;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -43,6 +42,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
     int qNum;
     double totalCash;
     public TextView cashView;
+    public TextView tenderedView;
 
 
     /*
@@ -102,10 +102,11 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
 
         userHasViewedDemo = thisUser.demosViewed[8];
 
-        cashView = findViewById(R.id.paidView);
+        cashView = findViewById(R.id.inputAmountView);
+        tenderedView = findViewById(R.id.tenderedAmountView);
 
         //views to drop onto
-        imageSandbox = findViewById(R.id.imageSandbox);
+        imageSandbox = findViewById(R.id.inputArea);
 
         //set drag listeners
         imageSandbox.setOnDragListener(new Level3ActivityCurrencyGame.ChoiceDragListener());
@@ -138,6 +139,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
         scoringAnswers[1] = "error";
         scoringAnswers[2] = "error";
 
+        startTime = System.currentTimeMillis();
         System.out.println("setQuestion::" + qNum);
         item.setBackgroundResource(tests[qNum].bought_item);
         item.setText(String.format(locale, format_string, tests[qNum].cost_item));
@@ -177,6 +179,10 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
                 int score_id = getResources().getIdentifier(score_name, "drawable", getPackageName());
                 ImageView tv = findViewById(R.id.score);
                 tv.setImageResource(score_id);
+                endTime = System.currentTimeMillis();
+                PerformanceData.getInstance().set_time(gameNum, qNum, endTime - startTime);
+            } else {
+                PerformanceData.getInstance().test_failed(gameNum, qNum);
             }
             writeToScore(name_score_file);
             MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.applause);
@@ -190,16 +196,12 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
             if (qNum < tests.length) {
                 setQuestion(qNum);
             } else {
-                if (is_purchase) {
-                    thisUser.activityProgress[ActivityGame.LEVEL3PURCHASE.ordinal()] = true; // TODO, Refactor
-                } else {
-                    thisUser.activityProgress[ActivityGame.LEVEL3EXACTCHANGE.ordinal()] = true; // TODO, Refactor
-                }
                 onBackPressed();
             }
 
         } else {
             scoringCorrect = "incorrect";
+            PerformanceData.getInstance().test_failed(gameNum, qNum);
             writeToScore(name_score_file);
             resetBoard();
         }
@@ -211,7 +213,6 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
         if (!thisUser.userName.equals("admin")) {
             updateUserSettings();
         }
-        backButtonPressed = true;
 
         Intent intent = createIntent(Level3Activity.class); // TODO Pop all the way out ? Probably
         // TODO : Make sure to test non admin behaviour
@@ -246,7 +247,7 @@ public abstract class Level3ActivityCurrencyGame extends CurrencyActivityGame {
                     //stop displaying the view where it was before it was dragged
                     view.setVisibility(View.VISIBLE);
 
-                    TextView cashView = findViewById(R.id.paidView);
+                    TextView cashView = findViewById(R.id.inputAmountView);
 
                     ImageView dropped = (ImageView) view;
                     String droppedId = dropped.getResources().getResourceName(dropped.getId());

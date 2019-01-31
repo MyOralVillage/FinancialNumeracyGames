@@ -54,4 +54,16 @@ public class UserSettings {
     public boolean[] availableLevels = {true, false, false};
     public boolean[] activityProgress = {false, false, false, false, false, false, false, false, false};
     public boolean admin = true;
+
+    /*
+     * This is just a placeholder right now.
+     *
+     * It provides a convenient place to at least call into for games
+     *
+     * So, each game will call in as a test is passed AND as it is failed.
+     */
+
+    void updateStatus(int testnum, int subtestnum, boolean passed, int time_taken) {
+
+    }
 }

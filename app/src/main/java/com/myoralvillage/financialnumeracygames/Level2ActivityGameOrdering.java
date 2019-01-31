@@ -396,7 +396,6 @@ public class Level2ActivityGameOrdering extends GenericActivityGame {
                 @Override
                 public void run() {
                     if (score == 10) {
-                        thisUser.activityProgress[4] = true;
                         if (difficultyLevel < 2) {
                             difficultyLevel++;
                             score = 0;
