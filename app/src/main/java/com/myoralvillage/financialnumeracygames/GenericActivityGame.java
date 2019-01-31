@@ -88,39 +88,11 @@ public abstract class GenericActivityGame extends AppCompatActivity {
 
     /*
      * TODO - This code needs to be radically changed
+     * Made it a no-op to make searching for calls easier
      */
 
     public final void writeToScore(String score_name) {
-        try {
-            if (!root.exists()) {
-                if (!root.mkdirs()) {
-                    displayError(R.string.cannot_make_directory);
-                    // TODO probably not sufficient
-                }
-            }
-            File userSettingsFile = new File(root, score_name);
 
-
-            FileWriter writer = new FileWriter(userSettingsFile, true);
-            writer.append(thisUser.userName);
-            writer.append(",");
-            writer.append(String.valueOf(thisUser.userId));
-            writer.append(",");
-            writer.append(String.valueOf(scoringNumAttempts));
-            writer.append(",");
-            writer.append(scoringCorrect);
-            writer.append(",");
-            writer.append(scoringSelectedAnswer);
-            writer.append(",");
-            writer.append(scoringQuestion);
-
-            writer.append("\n");
-            writer.flush();
-            writer.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void setHomeButton(View v) {

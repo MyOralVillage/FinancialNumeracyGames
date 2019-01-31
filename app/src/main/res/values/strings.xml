@@ -135,8 +135,11 @@
     <string name="the_item_that_is_being_purchased">The item that is being purchased</string>
     <string name="this_is_the_box_that_bills_get_dropped_in_as_user_purchsase_things">This is the box that bills get dropped in as user purchsase things</string>
     <string name="element_visible_only_in_exact_change_game_containing_currency_paid_total_and_images">Element visible only in exact change game containing currency paid (total and images)</string>
-    <string name="the_total_amount_paid_in_the_exact_change_game">The total amount paid in the exact change game</string>
     <string name="contains_the_image_of_the_bill">contains the image of the bill</string>
     <string name="contains_the_text_giving_the_number_of_bills">contains the text giving the number of bills</string>
+    <string name="element_visible_only_in_exact_change_game_containing_currency_tendered_total_and_images">element_visible_only_in_exact_change_game_containing_currency_tendered_total_and_images</string>
+    <string name="status_and_control_items_at_top_of_screen">Status and control items at top of screen</string>
+    <string name="the_total_amount_input_in_the_exact_change_game">the_total_amount_input_in_the_exact_change_game</string>
+    <string name="the_total_amount_tendered_in_the_exact_change_game">the_total_amount_tendered_in_the_exact_change_game</string>
 
 </resources>
