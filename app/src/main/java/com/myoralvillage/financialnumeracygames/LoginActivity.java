@@ -207,7 +207,7 @@ public class LoginActivity extends GenericActivityGame {
                     thisUser.userId = userNames.size();
                     WriteFile();
                 }
-                Intent intent = new Intent(this, GameMenuActivity.class);
+                Intent intent = new Intent(this, loginPinScreen.class);
                 intent.putExtra("USERSETTINGS_USERNAME", thisUser.userName);
                 intent.putExtra("USERSETTINGS_USERID", thisUser.userId);
                 intent.putExtra("USERSETTINGS_DEMOSVIEWED", thisUser.demosViewed);
@@ -235,7 +235,7 @@ public class LoginActivity extends GenericActivityGame {
                 thisUser.userId = userNames.size();
                 WriteFile();
             }
-            Intent intent = new Intent(this, GameMenuActivity.class);
+            Intent intent = new Intent(this, loginPinScreen.class);
             intent.putExtra("USERSETTINGS_USERNAME", thisUser.userName);
             intent.putExtra("USERSETTINGS_USERID", thisUser.userId);
             intent.putExtra("USERSETTINGS_DEMOSVIEWED", thisUser.demosViewed);
