@@ -1,16 +1,20 @@
 package com.myoralvillage.financialnumeracygames;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class loginPinScreen extends AppCompatActivity {
 
     ImageButton button0, button1, button2, button3, button4, button5, button6, button7, button8, button9, clear;
     EditText editText;
+    String text;
+    ImageView userDP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +33,39 @@ public class loginPinScreen extends AppCompatActivity {
         button9 = (ImageButton) findViewById(R.id.button9);
         clear = (ImageButton) findViewById(R.id.buttonClear);
         editText = (EditText) findViewById(R.id.editText);
+        userDP = (ImageView) findViewById(R.id.displayPic);
 
+        buttonListeners();
 
+        Bundle extras = getIntent().getExtras();
+        Bitmap bmp = extras.getParcelable("display_pic");
+
+        userDP.setImageBitmap(bmp );
+
+    }
+
+    public void confirmClicked(View v){
+        text = editText.getText().toString();
+        if(text.matches("123") ){
+            Intent intent = new Intent(this, AdminScreen.class);
+            startActivity(intent);
+            finish();
+        }
+        else{
+            Intent intent = new Intent(this, GameMenuActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    public void backClicked(View v){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void buttonListeners(){
+        //Inputs numbers into textview on click
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +135,7 @@ public class loginPinScreen extends AppCompatActivity {
                 editText.setText(editText.getText() + "0");
             }
         });
+        //end
 
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,17 +143,5 @@ public class loginPinScreen extends AppCompatActivity {
                 editText.setText("");
             }
         });
-    }
-
-    public void confirmClicked(View v){
-        Intent intent = new Intent(this, GameMenuActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    public void backClicked(View v){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
     }
 }

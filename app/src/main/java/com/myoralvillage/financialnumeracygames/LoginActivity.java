@@ -8,6 +8,7 @@ package com.myoralvillage.financialnumeracygames;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Environment;
@@ -182,6 +183,14 @@ public class LoginActivity extends GenericActivityGame {
     public void hasBeenClicked(View v) {
         ImageView iv = (ImageView) v;
         String userString = (String) iv.getTag();
+        iv.buildDrawingCache();
+
+        //Putting User DP through to next activity using bundle
+        Bitmap disPic= iv.getDrawingCache();
+        Bundle extras = new Bundle();
+        extras.putParcelable("display_pic", disPic);
+        //end
+
         if (userString.equals(lastImageClicked)) {
             clickCount++;
         } else {
@@ -214,6 +223,8 @@ public class LoginActivity extends GenericActivityGame {
                 intent.putExtra("USERSETTINGS_AVAILABLELEVELS", thisUser.availableLevels);
                 intent.putExtra("USERSETTINGS_ACTIVITYPROGRESS", thisUser.activityProgress);
                 intent.putExtra("USERSETTINGS_ADMIN", thisUser.admin);
+                //putting in bundle
+                intent.putExtras(extras);
                 startActivity(intent);
                 finish();
             }
@@ -242,6 +253,8 @@ public class LoginActivity extends GenericActivityGame {
             intent.putExtra("USERSETTINGS_AVAILABLELEVELS", thisUser.availableLevels);
             intent.putExtra("USERSETTINGS_ACTIVITYPROGRESS", thisUser.activityProgress);
             intent.putExtra("USERSETTINGS_ADMIN", thisUser.admin);
+            //putting in bundle
+            intent.putExtras(extras);
             startActivity(intent);
             finish();
         }
