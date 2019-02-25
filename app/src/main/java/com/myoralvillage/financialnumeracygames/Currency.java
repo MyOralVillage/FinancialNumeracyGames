@@ -28,6 +28,6 @@ public class Currency extends AppCompatActivity {
 
     //Will replace currencyChange
     public void selectCurrency(View v){
-
+        Toast.makeText(this, "Not yet implemented." , Toast.LENGTH_SHORT).show();
     }
 }
