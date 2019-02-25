@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginPinScreen">
+
+    <ImageButton
+        android:id="@+id/imageButton14"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="BackButton"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:onClick="backClicked"
+        android:scaleType="fitStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/demo_next_left_arrow_black" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="285dp"
+        android:layout_height="325dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButton14"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <ImageButton
+                android:id="@+id/button0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/n0" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <ImageButton
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/n1" />
+
+            <ImageButton
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/n2" />
+
+            <ImageButton
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/n3" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <ImageButton
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/n4" />
+
+            <ImageButton
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/n5" />
+
+            <ImageButton
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/n6" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <ImageButton
+                android:id="@+id/button7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/n7" />
+
+            <ImageButton
+                android:id="@+id/button8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/n8" />
+
+            <ImageButton
+                android:id="@+id/button9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/n9" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:enabled="false"
+        android:gravity="bottom"
+        android:lines="2"
+        android:maxLength="3"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.891"
+        app:layout_constraintStart_toEndOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/displayPic" />
+
+    <ImageView
+        android:id="@+id/displayPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginRight="200dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="80dp"
+        android:maxHeight="80dp"
+        android:minWidth="10dp"
+        android:minHeight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tableLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/game1_qa_fingers1" />
+
+    <ImageButton
+        android:id="@+id/buttonClear"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="EraseButton"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton16"
+        app:layout_constraintStart_toEndOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:srcCompat="@drawable/white_prev_arrow" />
+
+    <ImageButton
+        android:id="@+id/imageButton16"
+        android:layout_width="49dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="60dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="ContinueButton"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:onClick="confirmClicked"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:srcCompat="@drawable/white_next_arrow" />
+
+</android.support.constraint.ConstraintLayout>

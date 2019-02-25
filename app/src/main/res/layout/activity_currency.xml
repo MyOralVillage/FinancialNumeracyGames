@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Currency">
+
+    <ImageButton
+        android:id="@+id/imageButton14"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="BackButton"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:onClick="backClicked"
+        android:scaleType="fitStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/demo_next_left_arrow_black" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/india"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/flagMax"
+                android:maxHeight="@dimen/flagMax"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="10dp"
+                android:tag="India"
+                android:onClick="currencyChange"
+                app:srcCompat="@drawable/flag_of_india" />
+
+            <ImageView
+                android:id="@+id/kenya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/flagMax"
+                android:maxHeight="@dimen/flagMax"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="10dp"
+                android:tag="Kenya"
+                android:onClick="currencyChange"
+                app:srcCompat="@drawable/flag_of_kenya" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/flagMax"
+                android:maxHeight="@dimen/flagMax"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="10dp"
+                android:tag="Indonesia"
+                android:onClick="currencyChange"
+                app:srcCompat="@drawable/flag_of_indonesia" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/flagMax"
+                android:maxHeight="@dimen/flagMax"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="10dp"
+                app:srcCompat="@drawable/cur_2" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/flagMax"
+                android:maxHeight="@dimen/flagMax"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="10dp"
+                app:srcCompat="@drawable/cur_2" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/flagMax"
+                android:maxHeight="@dimen/flagMax"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="10dp"
+                app:srcCompat="@drawable/cur_2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/flagMax"
+                android:maxHeight="@dimen/flagMax"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="10dp"
+                app:srcCompat="@drawable/cur_2" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/flagMax"
+                android:maxHeight="@dimen/flagMax"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="10dp"
+                app:srcCompat="@drawable/cur_2" />
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="@dimen/flagMax"
+                android:maxHeight="@dimen/flagMax"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:padding="10dp"
+                app:srcCompat="@drawable/cur_2" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:maxWidth="80dp"
+                android:maxHeight="80dp"
+                android:minWidth="10dp"
+                android:minHeight="10dp"
+                android:onClick="selectCurrency"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/demo_next_right_arrow" />
+        </TableRow>
+    </TableLayout>
+</android.support.constraint.ConstraintLayout>
