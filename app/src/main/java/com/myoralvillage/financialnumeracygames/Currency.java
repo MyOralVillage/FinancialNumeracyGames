@@ -14,6 +14,7 @@ public class Currency extends AppCompatActivity {
         setContentView(R.layout.activity_currency);
     }
 
+    //Returns to admin screen
     public void backClicked(View v){
         Intent intent = new Intent(this, AdminScreen.class);
         startActivity(intent);

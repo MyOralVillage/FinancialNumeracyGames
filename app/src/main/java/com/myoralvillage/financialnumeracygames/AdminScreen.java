@@ -14,22 +14,26 @@ public class AdminScreen extends AppCompatActivity {
         setContentView(R.layout.activity_admin_screen);
     }
 
+    //Returns to Login ID screen
     public void backClicked(View v){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
 
+    //Temporarily send to user screen
     public void groupClicked(View v){
         Toast.makeText(this, "Option not yet implemented", Toast.LENGTH_SHORT).show();
     }
 
+    //Sends user to select active currency
     public void currencyClicked(View v){
         Intent intent = new Intent(this, Currency.class);
         startActivity(intent);
         finish();
     }
 
+    //Sends user to game menu
     public void gameClicked(View v){
         Intent intent = new Intent(this, GameMenuActivity.class);
         startActivity(intent);

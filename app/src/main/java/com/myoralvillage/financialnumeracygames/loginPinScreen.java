@@ -40,7 +40,8 @@ public class loginPinScreen extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         Bitmap bmp = extras.getParcelable("display_pic");
 
-        userDP.setImageBitmap(bmp );
+        //Sets user DP to image selected from previous screen
+        userDP.setImageBitmap(bmp);
 
     }
 
@@ -58,12 +59,14 @@ public class loginPinScreen extends AppCompatActivity {
         }
     }
 
+    //Returns to Login ID page
     public void backClicked(View v){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
 
+    //Listens for number input of clear command
     public void buttonListeners(){
         //Inputs numbers into textview on click
         button1.setOnClickListener(new View.OnClickListener() {
