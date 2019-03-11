@@ -52,7 +52,7 @@ public class LoginActivity extends GenericActivityGame {
         setContentView(R.layout.activity_login);
         //Toolbar myToolbar = (Toolbar) findViewById(R.id.options_toolbar);
         //setSupportActionBar(myToolbar);
-        ParseFile();
+        ParseFile(userNames);
         DrawProfiles();
     }
 
@@ -215,7 +215,6 @@ public class LoginActivity extends GenericActivityGame {
         extras.putParcelable("display_pic", disPic);
         //end
 
-//        //If tag equals admin (set from drawProfile method)
 //        if (userString.equals(lastImageClicked)) {
 //            clickCount++;
 //        } else {
@@ -282,23 +281,6 @@ public class LoginActivity extends GenericActivityGame {
             intent.putExtras(extras);
             startActivity(intent);
             finish();
-        }
-    }
-
-    public void ParseFile() {
-        File userSettingsFile = new File(root, "usersettings.txt");
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(userSettingsFile));
-            String line;
-
-            while ((line = br.readLine()) != null) {
-                String[] thisLine = line.split(",");
-                userNames.add(thisLine[0]);
-            }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

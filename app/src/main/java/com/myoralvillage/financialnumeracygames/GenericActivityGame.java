@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.List;
 import java.util.Locale;
 
 import java.io.BufferedReader;
@@ -211,6 +212,24 @@ public abstract class GenericActivityGame extends AppCompatActivity {
         private boolean performClick() {
             System.out.println("Got performClick event");
             return true;
+        }
+    }
+
+    //Updates profiles based on usersettings.txt file
+    public void ParseFile(List<String> userNames) {
+        File userSettingsFile = new File(root, "usersettings.txt");
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(userSettingsFile));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] thisLine = line.split(",");
+                userNames.add(thisLine[0]);
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

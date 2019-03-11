@@ -1,15 +1,22 @@
 package com.myoralvillage.financialnumeracygames;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserScreensActivity extends AppCompatActivity {
+public class UserScreensActivity extends GenericActivityGame {
 
     List<String> userNames = new ArrayList<>();
     boolean newProfile = true;
@@ -18,33 +25,11 @@ public class UserScreensActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_screens);
+        ParseFile(userNames);
         DrawProfiles();
     }
 
     public void DrawProfiles() {
-
-        if (12 - userNames.size() > 1) {
-            LinearLayout ll = findViewById(R.id.unclaimedProfiles1);
-            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
-            llParams.weight = 0.3f;
-            ll.setLayoutParams(llParams);
-        }
-        if (12 - userNames.size() > 7) {
-            LinearLayout ll = findViewById(R.id.unclaimedProfiles2);
-            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
-            llParams.weight = 0.3f;
-            ll.setLayoutParams(llParams);
-        }
-        if (userNames.size() > 5) {
-            LinearLayout ll = findViewById(R.id.claimedProfiles2);
-            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
-            llParams.weight = 0.3f;
-            ll.setLayoutParams(llParams);
-        }
-        LinearLayout ll = findViewById(R.id.claimedProfiles1);
-        LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
-        llParams.weight = 0.3f;
-        ll.setLayoutParams(llParams);
 
         int claimedCount = 0;
         int unclaimedCount = 0;
@@ -103,5 +88,142 @@ public class UserScreensActivity extends AppCompatActivity {
         iv.setAlpha(0.5f);
         iv.setVisibility(View.VISIBLE);
         iv.setTag(filename);
+    }
+
+    //When a user clicks a profile
+    public void hasBeenClicked(View v) {
+        ImageView iv = (ImageView) v;
+        String userString = (String) iv.getTag();
+        iv.buildDrawingCache();
+
+        //Putting selected User DP through to next activity using bundle
+        Bitmap disPic= iv.getDrawingCache();
+        Bundle extras = new Bundle();
+        extras.putParcelable("display_pic", disPic);
+        //end
+
+        if (userString.equals("admin")) {
+            thisUser.userName = userString;
+            getDataThroughFile();
+            if (thisUser.userName.equals("admin")) {
+                thisUser.userId = -1;
+                for (int i = 0; i < thisUser.demosViewed.length; i++) {
+                    thisUser.demosViewed[i] = false;
+                }
+                for (int i = 0; i < thisUser.availableLevels.length; i++) {
+                    thisUser.availableLevels[i] = true;
+                }
+                for (int i = 0; i < thisUser.activityProgress.length; i++) {
+                    thisUser.activityProgress[i] = true;
+                }
+            } else if (newProfile) {
+                thisUser.userId = userNames.size();
+                WriteFile();
+            }
+            Intent intent = new Intent(this, loginPinScreen.class);
+            intent.putExtra("USERSETTINGS_USERNAME", thisUser.userName);
+            intent.putExtra("USERSETTINGS_USERID", thisUser.userId);
+            intent.putExtra("USERSETTINGS_DEMOSVIEWED", thisUser.demosViewed);
+            intent.putExtra("USERSETTINGS_AVAILABLELEVELS", thisUser.availableLevels);
+            intent.putExtra("USERSETTINGS_ACTIVITYPROGRESS", thisUser.activityProgress);
+            intent.putExtra("USERSETTINGS_ADMIN", thisUser.admin);
+            //putting in bundle
+            intent.putExtras(extras);
+            startActivity(intent);
+            finish();
+        } else {
+            thisUser.userName = userString;
+            getDataThroughFile();
+            if (thisUser.userName.equals("admin")) {
+                thisUser.userId = -1;
+                for (int i = 0; i < thisUser.demosViewed.length; i++) {
+                    thisUser.demosViewed[i] = true;
+                }
+                for (int i = 0; i < thisUser.availableLevels.length; i++) {
+                    thisUser.availableLevels[i] = true;
+                }
+                for (int i = 0; i < thisUser.activityProgress.length; i++) {
+                    thisUser.activityProgress[i] = true;
+                }
+            } else if (newProfile) {
+                thisUser.userId = userNames.size();
+                WriteFile();
+            }
+            Intent intent = new Intent(this, loginPinScreen.class);
+            intent.putExtra("USERSETTINGS_USERNAME", thisUser.userName);
+            intent.putExtra("USERSETTINGS_USERID", thisUser.userId);
+            intent.putExtra("USERSETTINGS_DEMOSVIEWED", thisUser.demosViewed);
+            intent.putExtra("USERSETTINGS_AVAILABLELEVELS", thisUser.availableLevels);
+            intent.putExtra("USERSETTINGS_ACTIVITYPROGRESS", thisUser.activityProgress);
+            intent.putExtra("USERSETTINGS_ADMIN", thisUser.admin);
+            //putting in bundle
+            intent.putExtras(extras);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    public void getDataThroughFile() {
+        File userSettingsFile = new File(root, "usersettings.txt");
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(userSettingsFile));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] thisLine = line.split(",");
+                userNames.add(thisLine[0]);
+                if (thisUser.userName.equals(thisLine[0])) {
+                    setUserData(thisLine);
+                    newProfile = false;
+                }
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setUserData(String[] data) {
+        thisUser.userId = Integer.parseInt(data[1]);
+        for (int i = 0; i < thisUser.demosViewed.length; i++) {
+            thisUser.demosViewed[i] = Boolean.parseBoolean(data[i + 2]);
+        }
+        for (int i = 0; i < thisUser.availableLevels.length; i++) {
+            thisUser.availableLevels[i] = Boolean.parseBoolean(data[i + 11]);
+        }
+        for (int i = 0; i < thisUser.activityProgress.length; i++) {
+            thisUser.activityProgress[i] = Boolean.parseBoolean(data[i + 14]);
+        }
+    }
+
+    public void WriteFile() {
+        try {
+            if (!root.exists()) {
+                root.mkdirs();
+            }
+            File userSettingsFile = new File(root, "usersettings.txt");
+
+            if (!thisUser.userName.equals("admin")) {
+                FileWriter writer = new FileWriter(userSettingsFile, true);
+                writer.append(thisUser.userName + ",");
+                writer.append(String.valueOf(thisUser.userId));
+                for (int i = 0; i < thisUser.demosViewed.length; i++) {
+                    writer.append("," + thisUser.demosViewed[i]);
+                }
+                for (int i = 0; i < thisUser.availableLevels.length; i++) {
+                    writer.append("," + thisUser.availableLevels[i]);
+                }
+                for (int i = 0; i < thisUser.activityProgress.length; i++) {
+                    writer.append("," + thisUser.activityProgress[i]);
+                }
+                writer.append("\n");
+                writer.flush();
+                writer.close();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
