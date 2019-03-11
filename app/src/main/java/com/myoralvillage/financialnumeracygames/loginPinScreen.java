@@ -47,11 +47,13 @@ public class loginPinScreen extends AppCompatActivity {
 
     public void confirmClicked(View v){
         text = editText.getText().toString();
+        //To see admin options, use "123" to enter admin view
         if(text.matches("123") ){
             Intent intent = new Intent(this, AdminScreen.class);
             startActivity(intent);
             finish();
         }
+        //Default view; brings user to game screen
         else{
             Intent intent = new Intent(this, GameMenuActivity.class);
             startActivity(intent);

@@ -13,19 +13,19 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.myoralvillage.financialnumeracygames.LoginActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/options_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/options_toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="?attr/actionBarSize"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--android:elevation="4dp"-->
+        <!--android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />-->
 
     <LinearLayout
         android:id="@+id/unclaimedProfiles1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0"
+        android:layout_weight="0.3"
         android:orientation="horizontal">
 
         <ImageView
@@ -87,7 +87,7 @@
         android:id="@+id/unclaimedProfiles2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0"
+        android:layout_weight="0.3"
         android:orientation="horizontal">
 
         <ImageView
@@ -149,7 +149,7 @@
         android:id="@+id/claimedProfiles1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0"
+        android:layout_weight="0.3"
         android:orientation="horizontal">
 
         <ImageView
@@ -211,7 +211,7 @@
         android:id="@+id/claimedProfiles2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0"
+        android:layout_weight="0.3"
         android:orientation="horizontal">
 
         <ImageView

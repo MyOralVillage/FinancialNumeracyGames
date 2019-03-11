@@ -115,7 +115,7 @@
                 android:minWidth="10dp"
                 android:minHeight="10dp"
                 android:padding="10dp"
-                app:srcCompat="@drawable/cur_2" />
+                app:srcCompat="@drawable/kenya_20_shil" />
 
             <ImageView
                 android:id="@+id/imageView8"
@@ -127,7 +127,7 @@
                 android:minWidth="10dp"
                 android:minHeight="10dp"
                 android:padding="10dp"
-                app:srcCompat="@drawable/cur_2" />
+                app:srcCompat="@drawable/kenya_20_shil" />
         </TableRow>
 
         <TableRow
@@ -145,7 +145,7 @@
                 android:minWidth="10dp"
                 android:minHeight="10dp"
                 android:padding="10dp"
-                app:srcCompat="@drawable/cur_2" />
+                app:srcCompat="@drawable/kenya_20_shil" />
 
             <ImageView
                 android:id="@+id/imageView10"
@@ -157,7 +157,7 @@
                 android:minWidth="10dp"
                 android:minHeight="10dp"
                 android:padding="10dp"
-                app:srcCompat="@drawable/cur_2" />
+                app:srcCompat="@drawable/kenya_20_shil" />
 
             <ImageView
                 android:id="@+id/imageView11"
@@ -169,7 +169,7 @@
                 android:minWidth="10dp"
                 android:minHeight="10dp"
                 android:padding="10dp"
-                app:srcCompat="@drawable/cur_2" />
+                app:srcCompat="@drawable/kenya_20_shil" />
         </TableRow>
 
         <TableRow

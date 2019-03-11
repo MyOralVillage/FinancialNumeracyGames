@@ -9,12 +9,13 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".UserScreensActivity"></activity>
         <activity
             android:name=".Currency"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".AdminScreen"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".GameMenuActivity"
             android:icon="@drawable/international_numbers_icon"

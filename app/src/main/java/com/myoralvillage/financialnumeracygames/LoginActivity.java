@@ -42,28 +42,29 @@ public class LoginActivity extends GenericActivityGame {
 
     List<String> userNames = new ArrayList<>();
     boolean newProfile = true;
-    String lastImageClicked = "admin";
-    int clickCount = 0;
+    //String lastImageClicked = "admin";
+    //int clickCount = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.options_toolbar);
-        setSupportActionBar(myToolbar);
+        //Toolbar myToolbar = (Toolbar) findViewById(R.id.options_toolbar);
+        //setSupportActionBar(myToolbar);
         ParseFile();
         DrawProfiles();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.adminoptions, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.adminoptions, menu);
+//        return true;
+//    }
 
     @Override
+    //Shows a message; unimplemented options for admin
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
@@ -98,55 +99,73 @@ public class LoginActivity extends GenericActivityGame {
      */
 
     public void DrawProfiles() {
-
-        if (12 - userNames.size() > 1) {
-            LinearLayout ll = (LinearLayout) findViewById(R.id.unclaimedProfiles1);
-            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
-            llParams.weight = 0.3f;
-            ll.setLayoutParams(llParams);
-        }
-        if (12 - userNames.size() > 7) {
-            LinearLayout ll = (LinearLayout) findViewById(R.id.unclaimedProfiles2);
-            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
-            llParams.weight = 0.3f;
-            ll.setLayoutParams(llParams);
-        }
-        if (userNames.size() > 5) {
-            LinearLayout ll = (LinearLayout) findViewById(R.id.claimedProfiles2);
-            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
-            llParams.weight = 0.3f;
-            ll.setLayoutParams(llParams);
-        }
-        LinearLayout ll = (LinearLayout) findViewById(R.id.claimedProfiles1);
-        LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
-        llParams.weight = 0.3f;
-        ll.setLayoutParams(llParams);
-
+//
+//        //based on username size, changes weight of layouts from 0 to 0.3 to make them visible
+          //If at least one user is unclaimed, show unclaimedProfiles1 layout
+//        if (12 - userNames.size() > 1) {
+//            LinearLayout ll = (LinearLayout) findViewById(R.id.unclaimedProfiles1);
+//            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
+//            llParams.weight = 0.3f;
+//            ll.setLayoutParams(llParams);
+//        }
+          //If less than 5 users exist, show unclaimedProfiles2 layout
+//        if (12 - userNames.size() > 7) {
+//            LinearLayout ll = (LinearLayout) findViewById(R.id.unclaimedProfiles2);
+//            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
+//            llParams.weight = 0.3f;
+//            ll.setLayoutParams(llParams);
+//        }
+          //If more than 5 users exist, show claimedProfiles2
+//        if (userNames.size() > 5) {
+//            LinearLayout ll = (LinearLayout) findViewById(R.id.claimedProfiles2);
+//            LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
+//            llParams.weight = 0.3f;
+//            ll.setLayoutParams(llParams);
+//        }
+          //Show claimedProfiles1, so admin can be populated into the layout
+//        LinearLayout ll = (LinearLayout) findViewById(R.id.claimedProfiles1);
+//        LinearLayout.LayoutParams llParams = (LinearLayout.LayoutParams) ll.getLayoutParams();
+//        llParams.weight = 0.3f;
+//        ll.setLayoutParams(llParams);
+//
+//        //end of layout weight portion
+//
+//
         int claimedCount = 0;
         int unclaimedCount = 0;
 
+        //Loops 11 times
         for (int i = 1; i < 12; i++) {
+
             String filename = "user" + i;
+            //If any users exist
             if (userNames.size() > 0) {
                 if (userNames.contains(filename)) {
+                    //Find user assigned image
                     int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
                     claimedCount++;
 
                     String imgview_name = "claimedProfile" + claimedCount;
 
+                    //Finds invisible claimed profile from layout
                     int res_id = getResources().getIdentifier(imgview_name, "id", getPackageName());
-                    ImageView iv = (ImageView) findViewById(res_id);
+                    ImageView iv = findViewById(res_id);
+                    //Sets claimed profile image to user assigned image
                     iv.setImageResource(img_id);
+                    //Change image of claimed profile to half-transparent and makes it visible
                     iv.setAlpha(0.5f);
                     iv.setVisibility(View.VISIBLE);
+                    //Sets tag to user#
                     iv.setTag(filename);
 
                 } else {
+                    //If no more users exist, find remaining user images and display them
                     int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
                     unclaimedCount++;
 
                     String imgview_name = "unclaimedProfile" + unclaimedCount;
 
+                    //Finds invisible unclaimed profile from layout
                     int res_id = getResources().getIdentifier(imgview_name, "id", getPackageName());
                     ImageView iv = (ImageView) findViewById(res_id);
                     iv.setImageResource(img_id);
@@ -155,6 +174,8 @@ public class LoginActivity extends GenericActivityGame {
                 }
 
             } else {
+
+                //If no users exist, display all user profiles
                 int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
                 unclaimedCount++;
 
@@ -167,38 +188,42 @@ public class LoginActivity extends GenericActivityGame {
                 iv.setTag(filename);
             }
         }
+        //end of for loop
+
+        //Adds admin profile to end of claimed profiles
         int adminId = userNames.size() + 1;
         String filename = "admin";
         int img_id = getResources().getIdentifier(filename, "drawable", getPackageName());
-
         String imgview_name = "claimedProfile" + adminId;
         int res_id = getResources().getIdentifier(imgview_name, "id", getPackageName());
-        ImageView iv = (ImageView) findViewById(res_id);
+        ImageView iv = findViewById(res_id);
         iv.setImageResource(img_id);
         iv.setAlpha(0.5f);
         iv.setVisibility(View.VISIBLE);
         iv.setTag(filename);
     }
 
+    //When a user clicks a profile
     public void hasBeenClicked(View v) {
         ImageView iv = (ImageView) v;
         String userString = (String) iv.getTag();
         iv.buildDrawingCache();
 
-        //Putting User DP through to next activity using bundle
+        //Putting selected User DP through to next activity using bundle
         Bitmap disPic= iv.getDrawingCache();
         Bundle extras = new Bundle();
         extras.putParcelable("display_pic", disPic);
         //end
 
-        if (userString.equals(lastImageClicked)) {
-            clickCount++;
-        } else {
-            clickCount = 1;
-            lastImageClicked = userString;
-        }
+//        //If tag equals admin (set from drawProfile method)
+//        if (userString.equals(lastImageClicked)) {
+//            clickCount++;
+//        } else {
+//            clickCount = 1;
+//            lastImageClicked = userString;
+//        }
         if (userString.equals("admin")) {
-            if (clickCount >= 0) {  // Was if hit it 10 times. Now should work if just come in once
+//            if (clickCount >= 0) {  // Was if hit it 10 times. Now should work if just come in once
                 thisUser.userName = userString;
                 getDataThroughFile();
                 if (thisUser.userName.equals("admin")) {
@@ -227,7 +252,7 @@ public class LoginActivity extends GenericActivityGame {
                 intent.putExtras(extras);
                 startActivity(intent);
                 finish();
-            }
+//            }
         } else {
             thisUser.userName = userString;
             getDataThroughFile();
