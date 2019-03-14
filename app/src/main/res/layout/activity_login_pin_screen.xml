@@ -7,21 +7,21 @@
     tools:context=".loginPinScreen">
 
     <ImageButton
-        android:id="@+id/imageButton14"
+        android:id="@+id/backbutton"
         android:layout_width="wrap_content"
-        android:layout_height="42dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
-        android:adjustViewBounds="true"
+        android:adjustViewBounds="false"
         android:contentDescription="BackButton"
         android:maxWidth="50dp"
         android:maxHeight="50dp"
         android:onClick="backClicked"
-        android:scaleType="fitStart"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/demo_next_left_arrow_black" />
+        app:srcCompat="@drawable/backdefault" />
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -32,7 +32,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton14"
+        app:layout_constraintStart_toEndOf="@+id/backbutton"
         app:layout_constraintTop_toTopOf="parent">
 
 
