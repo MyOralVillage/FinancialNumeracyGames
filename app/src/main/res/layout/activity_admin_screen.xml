@@ -9,18 +9,19 @@
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
-        android:layout_height="42dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:adjustViewBounds="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:adjustViewBounds="false"
+        android:background="@android:color/transparent"
         android:maxWidth="50dp"
         android:maxHeight="50dp"
         android:onClick="backClicked"
         android:scaleType="fitStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/demo_next_left_arrow_black" />
+        app:srcCompat="@drawable/exitdefault" />
 
     <ImageButton
         android:id="@+id/Groups"
