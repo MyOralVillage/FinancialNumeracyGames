@@ -24,12 +24,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/backdefault" />
 
+    <!--Keypad-->
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="285dp"
         android:layout_height="325dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -204,71 +205,106 @@
 
     </TableLayout>
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="181dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="150dp"
-        android:enabled="false"
-        android:gravity="bottom"
-        android:lines="2"
-        android:maxLength="3"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.891"
-        app:layout_constraintStart_toEndOf="@+id/tableLayout"
-        app:layout_constraintTop_toBottomOf="@+id/displayPic" />
+    <!--Right Area-->
 
     <ImageView
         android:id="@+id/displayPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="200dp"
-        android:layout_marginRight="200dp"
+        android:layout_marginLeft="255dp"
+        android:layout_marginTop="100dp"
+        android:layout_weight="1"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:maxWidth="150dp"
         android:maxHeight="150dp"
         android:minWidth="10dp"
         android:minHeight="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:padding="1dp"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toEndOf="@+id/tableLayout"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/game1_qa_fingers1" />
+
+    <TableRow
+        android:id="@+id/inputRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toEndOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/displayPic">
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="50dp"
+            android:layout_height="62dp"
+            android:layout_weight="5"
+            android:adjustViewBounds="true"
+            android:background="@color/pinBox"
+            android:cursorVisible="false"
+            android:gravity="center"
+            android:maxWidth="80dp"
+            android:maxHeight="80dp"
+            android:maxLength="1"
+            android:minWidth="10dp"
+            android:minHeight="10dp"
+            android:scaleType="fitCenter"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="50dp"
+            android:layout_height="62dp"
+            android:layout_weight="5"
+            android:adjustViewBounds="true"
+            android:background="@color/pinBox"
+            android:cursorVisible="false"
+            android:gravity="center"
+            android:maxLength="1"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="50dp"
+            android:layout_height="62dp"
+            android:adjustViewBounds="true"
+            android:background="@color/pinBox"
+            android:cursorVisible="false"
+            android:gravity="center"
+            android:lines="2"
+            android:maxLength="1"
+            android:textSize="30sp" />
+
+    </TableRow>
 
     <ImageButton
         android:id="@+id/buttonClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="20dp"
         android:adjustViewBounds="false"
         android:background="@android:color/transparent"
         android:contentDescription="EraseButton"
         android:maxWidth="50dp"
         android:maxHeight="50dp"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/confirm"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/tableLayout"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/inputRow"
         app:srcCompat="@drawable/deletedefault" />
 
     <ImageButton
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
         android:adjustViewBounds="false"
         android:background="@android:color/transparent"
         android:contentDescription="ContinueButton"
@@ -276,8 +312,11 @@
         android:maxHeight="50dp"
         android:onClick="confirmClicked"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/buttonClear"
+        app:layout_constraintTop_toBottomOf="@+id/inputRow"
         app:srcCompat="@drawable/checkdefault" />
+
+
 
 </android.support.constraint.ConstraintLayout>

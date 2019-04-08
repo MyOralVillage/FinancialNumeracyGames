@@ -23,17 +23,18 @@ public class AdminScreen extends AppCompatActivity {
 
     //Temporarily send to user screen
     public void groupClicked(View v){
-//        Toast.makeText(this, "Option not yet implemented", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, UserScreensActivity.class);
-        startActivity(intent);
-        finish();
+        Toast.makeText(this, "Option not yet implemented", Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent(this, UserScreensActivity.class);
+//        startActivity(intent);
+//        finish();
     }
 
     //Sends user to select active currency
     public void currencyClicked(View v){
-        Intent intent = new Intent(this, Currency.class);
-        startActivity(intent);
-        finish();
+        Toast.makeText(this, "Option not yet implemented", Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent(this, Currency.class);
+//        startActivity(intent);
+//        finish();
     }
 
     //Sends user to game menu

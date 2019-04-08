@@ -9,19 +9,20 @@
     <ImageButton
         android:id="@+id/imageButton14"
         android:layout_width="wrap_content"
-        android:layout_height="42dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
-        android:adjustViewBounds="true"
+        android:adjustViewBounds="false"
+        android:background="@android:color/transparent"
         android:contentDescription="BackButton"
         android:maxWidth="50dp"
         android:maxHeight="50dp"
         android:onClick="backClicked"
-        android:scaleType="fitStart"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/demo_next_left_arrow_black" />
+        app:srcCompat="@drawable/backdefault" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -182,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
                 android:maxWidth="80dp"
                 android:maxHeight="80dp"
                 android:minWidth="10dp"
@@ -189,7 +191,7 @@
                 android:onClick="selectCurrency"
                 android:padding="1dp"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/demo_next_right_arrow" />
+                app:srcCompat="@drawable/checkdefault" />
         </TableRow>
     </TableLayout>
 </android.support.constraint.ConstraintLayout>

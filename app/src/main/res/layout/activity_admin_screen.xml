@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
@@ -37,13 +37,13 @@
         android:maxHeight="200dp"
         android:minWidth="10dp"
         android:minHeight="10dp"
+        android:onClick="groupClicked"
         android:padding="1dp"
         android:scaleType="fitCenter"
-        android:onClick="groupClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/game1_tracing_9" />
+        app:srcCompat="@drawable/view_users_button" />
 
     <ImageButton
         android:id="@+id/currency"
@@ -61,14 +61,14 @@
         android:maxHeight="200dp"
         android:minWidth="10dp"
         android:minHeight="10dp"
+        android:onClick="currencyClicked"
         android:padding="1dp"
         android:scaleType="fitCenter"
-        android:onClick="currencyClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/games"
         app:layout_constraintStart_toEndOf="@+id/Groups"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cur_1" />
+        app:srcCompat="@drawable/change_currency_button_kenya" />
 
     <ImageButton
         android:id="@+id/games"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="100dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
@@ -84,13 +84,13 @@
         android:maxHeight="200dp"
         android:minWidth="10dp"
         android:minHeight="10dp"
+        android:onClick="gameClicked"
         android:padding="1dp"
         android:scaleType="fitCenter"
-        android:onClick="gameClicked"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/level1_sign1" />
+        app:srcCompat="@drawable/games_button" />
 
 
 </android.support.constraint.ConstraintLayout>
